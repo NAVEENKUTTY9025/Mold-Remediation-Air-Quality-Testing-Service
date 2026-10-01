@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Quality Blog - PureAir Mold Remediation & Air Quality Testing</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg?v=2">
+  <meta name="description" content="Expert insights on mold prevention, indoor air quality, and healthy home practices from the PureAir team.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <script>
+    tailwind.config = { 
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            'accent': '#0077B6',
+            'secondary': '#005F8F',
+            'brand-dark': '#1A1A1A',
+            'brand-light': '#FFFFFF',
+            'brand-muted': '#4B5563',
+            'brand-surface': '#F8F9FA'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    [dir="rtl"] { direction: rtl; }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeInUp 0.8s ease-out; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+
+    /* Hide scrollbar for horizontal scroll areas */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans antialiased transition-colors duration-300 bg-white dark:bg-brand-dark flex flex-col min-h-screen">
+
+  <nav class="bg-white dark:bg-brand-dark fixed w-full top-0 z-50 border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-[90px]">
+
+        <div class="flex-shrink-0">
+          <a href="index.html" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 bg-brand-dark dark:bg-white rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:shadow-accent/30 shrink-0">
+              <svg class="w-5 h-5 text-accent dark:text-brand-dark group-hover:text-white transition-colors fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 1L2 6v12l10 5 10-5V6L12 1zm0 2.3l7.5 3.75-3.5 1.75-7.5-3.75L12 3.3zM4 7.8l7 3.5v8.4l-7-3.5V7.8zm9 11.9v-8.4l7-3.5v8.4l-7 3.5z"/>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-2xl font-black tracking-tight text-brand-dark dark:text-brand-light uppercase leading-none">Pure<span class="text-accent">Air</span></span>
+              <span class="text-[9px] font-bold tracking-[0.22em] text-accent uppercase mt-1 leading-none">Mold & Air Quality</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="hidden xl:flex items-center justify-center flex-1 mx-8">
+          <div class="flex items-center gap-8">
+
+            <div class="relative group h-[90px] flex items-center">
+              <button class="text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors flex items-center relative py-2">
+                <span>Home</span>
+                <i class="fas fa-chevron-down text-[10px] ms-2 transition-transform duration-300 group-hover:rotate-180"></i>
+                <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              
+              <div class="absolute top-[90px] start-0 w-56 bg-white dark:bg-[#1E293B] border border-t-0 border-gray-200 dark:border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-50">
+                <div class="py-4 px-6 flex flex-col gap-4">
+                  <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">HOME PAGE 01</a>
+                  <a href="home-2.html" class="text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">HOME PAGE 02</a>
+                </div>
+              </div>
+            </div>
+
+            <a href="about.html" class="relative group text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors py-2">
+              About
+              <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            
+            <a href="services.html" class="relative group text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors py-2">
+              Services
+              <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            
+            <a href="blog.html" class="relative group text-xs uppercase tracking-[0.15em] font-medium text-accent transition-colors py-2">
+              Blog
+              <span class="absolute bottom-0 start-0 w-full h-[2px] bg-accent"></span>
+            </a>
+            
+            <a href="contact.html" class="relative group text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors py-2">
+              Contact
+              <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
+            <div class="relative group h-[90px] flex items-center">
+              <button class="text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors flex items-center relative py-2">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-down text-[10px] ms-2 transition-transform duration-300 group-hover:rotate-180"></i>
+                <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              
+              <div class="absolute top-[90px] end-0 w-64 bg-white dark:bg-[#1E293B] border border-t-0 border-gray-200 dark:border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-50">
+                <div class="py-4 px-6 flex flex-col gap-5">
+                  <a href="admin-dashboard.html" class="flex items-center text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">
+                     Admin Dashboard
+                  </a>
+                  <a href="client-dashboard.html" class="flex items-center text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">
+                     Client Dashboard
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="hidden xl:flex items-center gap-4">
+          
+          <button id="theme-toggle" class="relative w-[72px] h-[34px] flex items-center bg-gray-200 dark:bg-[#1E293B] rounded-full p-1 transition-colors duration-300 focus:outline-none border border-gray-300 dark:border-gray-700 overflow-hidden" title="Toggle Theme">
+            <span class="text-[9px] font-medium text-gray-500 absolute end-2.5 dark:opacity-0 transition-opacity duration-300 tracking-wider">LIGHT</span>
+            <span class="text-[9px] font-medium text-accent absolute start-2.5 opacity-0 dark:opacity-100 transition-opacity duration-300 tracking-wider">DARK</span>
+            
+            <div class="w-[24px] h-[24px] bg-white dark:bg-brand-dark border border-gray-200 dark:border-gray-600 rounded-full shadow-sm transform transition-transform duration-300 flex items-center justify-center rtl:dark:-translate-x-[38px] ltr:dark:translate-x-[38px] dark:translate-x-[38px] z-10">
+              <i class="fas fa-sun text-[11px] text-accent dark:hidden block"></i>
+              <i class="fas fa-moon text-[11px] text-accent hidden dark:block"></i>
+            </div>
+          </button>
+          
+          <button id="rtl-toggle" class="text-xs font-medium text-gray-400 hover:text-accent transition-colors duration-300 ms-2" title="Toggle RTL">
+            RTL
+          </button>
+
+          <div class="h-8 w-px bg-gray-200 dark:bg-gray-800 mx-2"></div>
+
+          <button type="button" onclick="window.location.href='login.html'" class="bg-accent border-2 border-accent text-white hover:bg-transparent hover:text-accent px-6 py-2.5 text-xs uppercase tracking-wider font-semibold transition-all duration-300 flex items-center gap-2">
+            <span>Login</span>
+            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+          </button>
+          
+          <a href="register.html" class="bg-transparent border-2 border-gray-300 dark:border-gray-700 text-brand-dark dark:text-brand-light hover:border-accent dark:hover:border-accent hover:text-accent dark:hover:text-accent px-6 py-2.5 text-xs uppercase tracking-wider font-medium transition-all duration-300 flex items-center gap-2">
+            <span>Register</span>
+            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+          </a>
+        </div>
+
+        <div class="xl:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-900 dark:text-brand-light hover:text-accent focus:outline-none transition duration-300">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path id="menu-icon" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              <path id="close-icon" class="hidden" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-[#1E293B] border-b border-gray-200 dark:border-gray-800 shadow-2xl">
+      <div class="px-6 pt-4 pb-8 flex flex-col gap-0 max-h-[calc(100vh-90px)] overflow-y-auto">
+
+        <div class="border-b border-gray-100 dark:border-white/5">
+          <button id="mobile-home-dropdown" class="w-full flex items-center justify-between py-4 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300">
+            <span class="text-xs uppercase tracking-widest font-medium">Home</span>
+            <i class="fas fa-plus text-xs transition-transform duration-300" id="mobile-home-icon"></i>
+          </button>
+          <div id="mobile-home-menu" class="hidden pb-4 flex flex-col gap-3 ps-4 border-s-2 border-accent/20 ms-2">
+            <a href="index.html" class="block text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 transition duration-300 uppercase tracking-wider">01. Home Page</a>
+            <a href="home-2.html" class="block text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 transition duration-300 uppercase tracking-wider">02. Home Page</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="block py-4 border-b border-gray-100 dark:border-white/5 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300 text-xs uppercase tracking-widest font-medium">About</a>
+        <a href="services.html" class="block py-4 border-b border-gray-100 dark:border-white/5 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300 text-xs uppercase tracking-widest font-medium">Services</a>
+        <a href="blog.html" class="block py-4 border-b border-gray-100 dark:border-white/5 text-accent transition duration-300 text-xs uppercase tracking-widest font-medium">Blog</a>
+        <a href="contact.html" class="block py-4 border-b border-gray-100 dark:border-white/5 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300 text-xs uppercase tracking-widest font-medium">Contact</a>
+
+        <div class="border-b border-gray-100 dark:border-white/5">
+          <button id="mobile-dashboard-dropdown" class="w-full flex items-center justify-between py-4 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300">
+            <span class="text-xs uppercase tracking-widest font-medium">Dashboard</span>
+            <i class="fas fa-plus text-xs transition-transform duration-300" id="mobile-dashboard-icon"></i>
+          </button>
+          <div id="mobile-dashboard-menu" class="hidden pb-4 flex flex-col gap-4 ps-4 border-s-2 border-accent/20 ms-2 mt-2">
+            <a href="admin-dashboard.html" class="flex items-center text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 transition duration-300 uppercase tracking-wider">
+               Admin Dashboard
+            </a>
+            <a href="client-dashboard.html" class="flex items-center text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 transition duration-300 uppercase tracking-wider">
+               Client Dashboard
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col gap-4">
+          <button type="button" onclick="window.location.href='login.html'" class="flex items-center justify-center w-full bg-accent border-2 border-accent text-white hover:bg-transparent hover:text-accent px-4 py-3.5 font-semibold uppercase tracking-widest text-center transition duration-300 text-xs gap-2">
+            <span>Login</span>
+            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+          </button>
+          
+          <a href="register.html" class="flex items-center justify-center w-full bg-transparent border-2 border-gray-300 dark:border-gray-700 text-brand-dark dark:text-brand-light hover:border-accent dark:hover:border-accent hover:text-accent dark:hover:text-accent px-4 py-3.5 font-medium uppercase tracking-widest text-center transition duration-300 text-xs gap-2">
+            <span>Register</span>
+            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+          </a>
+          
+          <div class="flex justify-between items-center pt-6 pb-2 border-t border-gray-100 dark:border-white/5 mt-4">
+            <button id="mobile-theme-toggle" class="bg-gray-100 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-full px-4 py-2 transition-colors flex items-center text-xs font-medium uppercase tracking-widest">
+              <span class="dark:hidden flex items-center text-accent"><i class="fas fa-sun me-2"></i> Light Active</span>
+              <span class="hidden dark:flex items-center text-accent"><i class="fas fa-moon me-2"></i> Dark Active</span>
+            </button>
+            <button id="mobile-rtl-toggle" class="text-gray-400 hover:text-accent transition-colors flex items-center text-xs font-medium uppercase tracking-widest">
+              <i class="fas fa-language me-2 text-lg"></i> RTL
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow flex flex-col pt-[90px]">
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: HERO — Full-width with featured article card      -->
+    <!-- ============================================================ -->
+    <section class="relative min-h-[520px] lg:min-h-[600px] flex items-center overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Air quality blog" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-brand-dark/60"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+          <!-- Left: Header -->
+          <div class="text-white">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 border border-accent/40 rounded-full bg-white/5 backdrop-blur">
+              <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <span class="text-[10px] font-bold uppercase tracking-[0.25em]">The PureAir Journal</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.05] mb-6">
+              Breathe smarter with <span class="text-accent">expert insights.</span>
+            </h1>
+            <p class="text-lg text-gray-300 leading-relaxed mb-10 max-w-lg">
+              Practical guides, industry news, and science-backed advice on mold prevention, indoor air quality, and healthy living.
+            </p>
+
+            <nav class="flex items-center gap-3 text-xs uppercase tracking-widest font-medium mb-10">
+              <a href="index.html" class="text-gray-400 hover:text-accent transition-colors">Home</a>
+              <i class="fas fa-chevron-right text-[8px] text-gray-500 rtl:rotate-180"></i>
+              <span class="text-accent">Blog</span>
+            </nav>
+          </div>
+
+          <!-- Right: Featured Article Card -->
+          <a href="blog-details.html" class="group relative bg-white/5 backdrop-blur border border-white/10 hover:border-accent transition-colors overflow-hidden">
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Featured article" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-accent text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Featured</div>
+            </div>
+            <div class="p-7">
+              <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
+                <span>Mar 12, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-500"></span>
+                <span>8 min read</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                The 7 hidden signs of mold you should never ignore
+              </h3>
+              <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                Musty smells, chronic allergies, and warping walls — the subtle clues that mean it's time to call a professional.
+              </p>
+              <div class="flex items-center gap-3 pt-5 border-t border-white/10">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author" class="w-9 h-9 rounded-full object-cover border border-accent">
+                <div>
+                  <p class="text-xs font-bold text-white">Dr. Elena Marsh</p>
+                  <p class="text-[10px] uppercase tracking-widest text-gray-500">Founder & Lead Inspector</p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: CATEGORIES — Horizontal icon tiles                -->
+    <!-- ============================================================ -->
+    <section class="py-16 bg-brand-surface dark:bg-[#0F172A] border-b border-gray-100 dark:border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-sm font-bold uppercase tracking-[0.25em] text-brand-muted dark:text-gray-400">Browse by category</h2>
+          <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-accent hover:text-secondary transition-colors">View all →</a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+
+          <a href="#" class="group flex flex-col items-center gap-3 p-5 bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 hover:border-accent transition-colors text-center">
+            <div class="w-12 h-12 bg-accent/10 group-hover:bg-accent transition-colors flex items-center justify-center">
+              <i class="fas fa-search text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <div>
+              <p class="font-bold text-sm text-brand-dark dark:text-white">Mold</p>
+              <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400 mt-1">12 articles</p>
+            </div>
+          </a>
+
+          <a href="#" class="group flex flex-col items-center gap-3 p-5 bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 hover:border-accent transition-colors text-center">
+            <div class="w-12 h-12 bg-accent/10 group-hover:bg-accent transition-colors flex items-center justify-center">
+              <i class="fas fa-wind text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <div>
+              <p class="font-bold text-sm text-brand-dark dark:text-white">Air Quality</p>
+              <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400 mt-1">18 articles</p>
+            </div>
+          </a>
+
+          <a href="#" class="group flex flex-col items-center gap-3 p-5 bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 hover:border-accent transition-colors text-center">
+            <div class="w-12 h-12 bg-accent/10 group-hover:bg-accent transition-colors flex items-center justify-center">
+              <i class="fas fa-droplet text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <div>
+              <p class="font-bold text-sm text-brand-dark dark:text-white">Moisture</p>
+              <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400 mt-1">9 articles</p>
+            </div>
+          </a>
+
+          <a href="#" class="group flex flex-col items-center gap-3 p-5 bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 hover:border-accent transition-colors text-center">
+            <div class="w-12 h-12 bg-accent/10 group-hover:bg-accent transition-colors flex items-center justify-center">
+              <i class="fas fa-house-chimney-window text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <div>
+              <p class="font-bold text-sm text-brand-dark dark:text-white">Home Health</p>
+              <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400 mt-1">14 articles</p>
+            </div>
+          </a>
+
+          <a href="#" class="group flex flex-col items-center gap-3 p-5 bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 hover:border-accent transition-colors text-center">
+            <div class="w-12 h-12 bg-accent/10 group-hover:bg-accent transition-colors flex items-center justify-center">
+              <i class="fas fa-tools text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <div>
+              <p class="font-bold text-sm text-brand-dark dark:text-white">DIY & Fixes</p>
+              <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400 mt-1">7 articles</p>
+            </div>
+          </a>
+
+          <a href="#" class="group flex flex-col items-center gap-3 p-5 bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 hover:border-accent transition-colors text-center">
+            <div class="w-12 h-12 bg-accent/10 group-hover:bg-accent transition-colors flex items-center justify-center">
+              <i class="fas fa-flask text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <div>
+              <p class="font-bold text-sm text-brand-dark dark:text-white">Science</p>
+              <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400 mt-1">11 articles</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: LATEST POSTS — 3-column card grid                 -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-white dark:bg-brand-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div class="max-w-xl">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-3">Latest Posts</span>
+            <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-dark dark:text-white leading-tight">
+              Fresh from the <span class="text-accent">journal</span>
+            </h2>
+          </div>
+          <div class="flex gap-2">
+            <button class="w-11 h-11 border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white hover:border-accent hover:text-accent transition-colors flex items-center justify-center">
+              <i class="fas fa-chevron-left text-sm"></i>
+            </button>
+            <button class="w-11 h-11 border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white hover:border-accent hover:text-accent transition-colors flex items-center justify-center">
+              <i class="fas fa-chevron-right text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Post 1 -->
+          <article class="group bg-brand-surface dark:bg-[#1E293B] overflow-hidden border border-gray-100 dark:border-white/5 hover:border-accent transition-colors flex flex-col">
+            <a href="blog-details.html" class="relative block h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-white dark:bg-brand-dark px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent">Air Quality</div>
+            </a>
+            <div class="p-7 flex flex-col flex-grow">
+              <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-3">
+                <span>Mar 10, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                <a href="blog-details.html">How to test your indoor air quality in 15 minutes</a>
+              </h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6 flex-grow">
+                A simple DIY method to spot-check your home's air before booking a professional test.
+              </p>
+              <div class="flex items-center gap-3 pt-5 border-t border-gray-200 dark:border-white/10">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-bold text-brand-dark dark:text-white">Dr. Priya Nair</p>
+                  <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400">IAQ Scientist</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="group bg-brand-surface dark:bg-[#1E293B] overflow-hidden border border-gray-100 dark:border-white/5 hover:border-accent transition-colors flex flex-col">
+            <a href="blog-details.html" class="relative block h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-white dark:bg-brand-dark px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent">Mold</div>
+            </a>
+            <div class="p-7 flex flex-col flex-grow">
+              <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-3">
+                <span>Mar 08, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+                <span>9 min read</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                <a href="blog-details.html">Black mold vs. common mold: what's the real difference?</a>
+              </h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6 flex-grow">
+                Not all mold is equally dangerous. Here's how to identify the dangerous types.
+              </p>
+              <div class="flex items-center gap-3 pt-5 border-t border-gray-200 dark:border-white/10">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-bold text-brand-dark dark:text-white">Dr. Elena Marsh</p>
+                  <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400">Founder</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="group bg-brand-surface dark:bg-[#1E293B] overflow-hidden border border-gray-100 dark:border-white/5 hover:border-accent transition-colors flex flex-col">
+            <a href="blog-details.html" class="relative block h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-white dark:bg-brand-dark px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent">Moisture</div>
+            </a>
+            <div class="p-7 flex flex-col flex-grow">
+              <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-3">
+                <span>Mar 05, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                <a href="blog-details.html">5 places in your home where moisture hides</a>
+              </h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6 flex-grow">
+                From crawlspaces to HVAC pans — the secret hiding spots you need to check.
+              </p>
+              <div class="flex items-center gap-3 pt-5 border-t border-gray-200 dark:border-white/10">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-bold text-brand-dark dark:text-white">Marcus Reed</p>
+                  <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400">Remediation Lead</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 4 -->
+          <article class="group bg-brand-surface dark:bg-[#1E293B] overflow-hidden border border-gray-100 dark:border-white/5 hover:border-accent transition-colors flex flex-col">
+            <a href="blog-details.html" class="relative block h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-white dark:bg-brand-dark px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent">Home Health</div>
+            </a>
+            <div class="p-7 flex flex-col flex-grow">
+              <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-3">
+                <span>Mar 02, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+                <span>5 min read</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                <a href="blog-details.html">How poor air quality affects sleep and cognition</a>
+              </h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6 flex-grow">
+                The science behind why clean air is essential for deep sleep and mental clarity.
+              </p>
+              <div class="flex items-center gap-3 pt-5 border-t border-gray-200 dark:border-white/10">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-bold text-brand-dark dark:text-white">James Carter</p>
+                  <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400">Prevention Expert</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 5 -->
+          <article class="group bg-brand-surface dark:bg-[#1E293B] overflow-hidden border border-gray-100 dark:border-white/5 hover:border-accent transition-colors flex flex-col">
+            <a href="blog-details.html" class="relative block h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-white dark:bg-brand-dark px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent">DIY & Fixes</div>
+            </a>
+            <div class="p-7 flex flex-col flex-grow">
+              <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-3">
+                <span>Feb 28, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+                <span>10 min read</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                <a href="blog-details.html">The complete homeowner's guide to mold prevention</a>
+              </h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6 flex-grow">
+                Ten proactive steps that will save you thousands in remediation costs.
+              </p>
+              <div class="flex items-center gap-3 pt-5 border-t border-gray-200 dark:border-white/10">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-bold text-brand-dark dark:text-white">Dr. Elena Marsh</p>
+                  <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400">Founder</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 6 -->
+          <article class="group bg-brand-surface dark:bg-[#1E293B] overflow-hidden border border-gray-100 dark:border-white/5 hover:border-accent transition-colors flex flex-col">
+            <a href="blog-details.html" class="relative block h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post 6" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-white dark:bg-brand-dark px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent">Science</div>
+            </a>
+            <div class="p-7 flex flex-col flex-grow">
+              <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-3">
+                <span>Feb 25, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+                <span>8 min read</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                <a href="blog-details.html">Understanding VOCs: the invisible chemicals in your home</a>
+              </h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6 flex-grow">
+                Where they come from, why they matter, and how to reduce your exposure.
+              </p>
+              <div class="flex items-center gap-3 pt-5 border-t border-gray-200 dark:border-white/10">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-bold text-brand-dark dark:text-white">Dr. Priya Nair</p>
+                  <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400">IAQ Scientist</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="text-center mt-16">
+          <a href="#" class="inline-flex items-center gap-3 px-8 py-4 border-2 border-brand-dark dark:border-white text-brand-dark dark:text-white font-bold uppercase tracking-widest text-xs hover:border-accent hover:text-accent dark:hover:border-accent dark:hover:text-accent transition-colors">
+            Load More Articles <i class="fas fa-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: EDITOR'S PICKS — Large quote-style feature        -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-gray-50 dark:bg-brand-dark relative overflow-hidden">
+      <i class="fas fa-quote-right absolute top-12 end-12 text-[220px] text-gray-200 dark:text-white/5 leading-none pointer-events-none hidden lg:block"></i>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <div class="max-w-3xl mb-16">
+          <span class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-3">Editor's Picks</span>
+          <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-dark dark:text-white leading-tight">
+            Deep dives worth your <span class="text-accent">weekend read.</span>
+          </h2>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8">
+
+          <!-- Big featured pick -->
+          <a href="blog-details.html" class="lg:col-span-7 group relative overflow-hidden shadow-sm dark:shadow-none">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Editor pick" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent"></div>
+              <div class="absolute bottom-0 start-0 end-0 p-10">
+                <span class="inline-block bg-accent text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-4">Must Read</span>
+                <h3 class="text-3xl font-serif font-bold text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                  The hidden cost of ignoring a small water leak
+                </h3>
+                <p class="text-gray-300 leading-relaxed mb-5 max-w-lg">
+                  A single slow drip can cost you thousands in remediation — here's the timeline of damage most homeowners don't see.
+                </p>
+                <div class="flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Author" class="w-10 h-10 rounded-full object-cover border border-accent">
+                  <div>
+                    <p class="text-sm font-bold text-white">Dr. Elena Marsh</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400">Mar 01, 2026 · 12 min read</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Two smaller picks stacked -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+
+            <a href="blog-details.html" class="group flex gap-5 bg-white dark:bg-white/5 backdrop-blur border border-gray-200 dark:border-white/10 hover:border-accent transition-colors p-5 shadow-sm dark:shadow-none">
+              <div class="shrink-0 w-28 h-28 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pick 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="flex flex-col justify-center">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2">Air Quality</span>
+                <h4 class="font-serif font-bold text-brand-dark dark:text-white mb-2 group-hover:text-accent transition-colors leading-tight">
+                  HEPA vs. ionic purifiers: which actually works?
+                </h4>
+                <p class="text-[10px] uppercase tracking-widest text-gray-500">Feb 26, 2026 · 7 min</p>
+              </div>
+            </a>
+
+            <a href="blog-details.html" class="group flex gap-5 bg-white dark:bg-white/5 backdrop-blur border border-gray-200 dark:border-white/10 hover:border-accent transition-colors p-5 shadow-sm dark:shadow-none">
+              <div class="shrink-0 w-28 h-28 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pick 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="flex flex-col justify-center">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2">Moisture</span>
+                <h4 class="font-serif font-bold text-brand-dark dark:text-white mb-2 group-hover:text-accent transition-colors leading-tight">
+                  Why your crawlspace is the #1 mold risk in your home
+                </h4>
+                <p class="text-[10px] uppercase tracking-widest text-gray-500">Feb 22, 2026 · 9 min</p>
+              </div>
+            </a>
+
+            <a href="blog-details.html" class="group flex gap-5 bg-white dark:bg-white/5 backdrop-blur border border-gray-200 dark:border-white/10 hover:border-accent transition-colors p-5 shadow-sm dark:shadow-none">
+              <div class="shrink-0 w-28 h-28 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pick 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="flex flex-col justify-center">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2">Science</span>
+                <h4 class="font-serif font-bold text-brand-dark dark:text-white mb-2 group-hover:text-accent transition-colors leading-tight">
+                  How mold spores travel through your HVAC system
+                </h4>
+                <p class="text-[10px] uppercase tracking-widest text-gray-500">Feb 18, 2026 · 6 min</p>
+              </div>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: AUTHOR SPOTLIGHT — 4 expert contributors          -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-white dark:bg-brand-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-3">Our Writers</span>
+          <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-dark dark:text-white leading-tight">
+            Insights from <span class="text-accent">certified experts</span>
+          </h2>
+          <p class="text-brand-muted dark:text-gray-400 mt-5 leading-relaxed">
+            Every article is written or reviewed by a certified mold inspector, IAQ scientist, or remediation specialist.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <!-- Author 1 -->
+          <div class="group text-center">
+            <div class="relative w-32 h-32 mx-auto mb-6">
+              <div class="absolute inset-0 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors"></div>
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Author" class="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] rounded-full object-cover">
+            </div>
+            <h3 class="text-lg font-serif font-bold text-brand-dark dark:text-white mb-1">Dr. Elena Marsh</h3>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-accent mb-3">Founder · Lead Inspector</p>
+            <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-4">
+              15+ years in building science, mold assessment, and environmental health.
+            </p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400">24 articles</p>
+          </div>
+
+          <!-- Author 2 -->
+          <div class="group text-center">
+            <div class="relative w-32 h-32 mx-auto mb-6">
+              <div class="absolute inset-0 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors"></div>
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Author" class="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] rounded-full object-cover">
+            </div>
+            <h3 class="text-lg font-serif font-bold text-brand-dark dark:text-white mb-1">Marcus Reed</h3>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-accent mb-3">Remediation Lead</p>
+            <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-4">
+              Expert in containment, HEPA filtration, and safe removal of mold-damaged materials.
+            </p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400">18 articles</p>
+          </div>
+
+          <!-- Author 3 -->
+          <div class="group text-center">
+            <div class="relative w-32 h-32 mx-auto mb-6">
+              <div class="absolute inset-0 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors"></div>
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Author" class="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] rounded-full object-cover">
+            </div>
+            <h3 class="text-lg font-serif font-bold text-brand-dark dark:text-white mb-1">Dr. Priya Nair</h3>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-accent mb-3">IAQ Scientist</p>
+            <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-4">
+              Specializes in air sampling, allergen detection, and healthy building diagnostics.
+            </p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400">21 articles</p>
+          </div>
+
+          <!-- Author 4 -->
+          <div class="group text-center">
+            <div class="relative w-32 h-32 mx-auto mb-6">
+              <div class="absolute inset-0 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors"></div>
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Author" class="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] rounded-full object-cover">
+            </div>
+            <h3 class="text-lg font-serif font-bold text-brand-dark dark:text-white mb-1">James Carter</h3>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-accent mb-3">Prevention Expert</p>
+            <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-4">
+              Focuses on moisture control, encapsulation, and long-term mold prevention.
+            </p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400">15 articles</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: NEWSLETTER CTA — Bordered box with corner accents -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-brand-surface dark:bg-[#0F172A]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative border-2 border-accent p-10 md:p-16 lg:p-20 overflow-hidden">
+          <!-- Corner accents -->
+          <div class="absolute -top-1 -start-1 w-10 h-10 border-t-4 border-s-4 border-accent"></div>
+          <div class="absolute -top-1 -end-1 w-10 h-10 border-t-4 border-e-4 border-accent"></div>
+          <div class="absolute -bottom-1 -start-1 w-10 h-10 border-b-4 border-s-4 border-accent"></div>
+          <div class="absolute -bottom-1 -end-1 w-10 h-10 border-b-4 border-e-4 border-accent"></div>
+
+          <div class="absolute top-0 end-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+
+          <div class="relative text-center max-w-2xl mx-auto">
+            <div class="w-16 h-16 mx-auto bg-accent flex items-center justify-center mb-6">
+              <i class="fas fa-envelope-open-text text-white text-2xl"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-brand-dark dark:text-white leading-tight mb-5">
+              Never miss an <span class="text-accent">insight.</span>
+            </h2>
+            <p class="text-brand-muted dark:text-gray-400 leading-relaxed mb-8">
+              Join 5,000+ homeowners receiving our monthly digest — prevention tips, air quality alerts, and exclusive service offers. No spam, ever.
+            </p>
+
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                class="flex-grow px-5 py-4 bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white placeholder-gray-400 focus:outline-none focus:border-accent transition-colors"
+                required
+              >
+              <button 
+                type="submit" 
+                class="px-8 py-4 bg-accent text-white font-bold uppercase tracking-widest text-xs hover:bg-secondary transition-colors whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+
+            <p class="text-xs text-brand-muted dark:text-gray-400 mt-5">
+              Read our <a href="#" class="text-accent hover:underline">Privacy Policy</a>. Unsubscribe at any time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-brand-dark text-white pt-24 pb-12 mt-auto border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        
+        <div>
+          <a href="index.html" class="flex items-center gap-3 mb-6 group w-fit">
+            <div class="w-10 h-10 bg-white dark:bg-brand-dark rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-accent shrink-0">
+              <svg class="w-5 h-5 text-brand-dark dark:text-accent group-hover:text-white transition-colors fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 1L2 6v12l10 5 10-5V6L12 1zm0 2.3l7.5 3.75-3.5 1.75-7.5-3.75L12 3.3zM4 7.8l7 3.5v8.4l-7-3.5V7.8zm9 11.9v-8.4l7-3.5v8.4l-7 3.5z"/>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-2xl font-black tracking-tight uppercase text-white leading-none">Pure<span class="text-accent">Air</span></span>
+              <span class="text-[9px] font-bold tracking-[0.22em] text-accent uppercase mt-1 leading-none">Mold & Air Quality</span>
+            </div>
+          </a>
+          <p class="text-gray-400 mb-8 font-medium leading-relaxed text-base">
+            Professional mold remediation and indoor air quality testing for healthier homes and businesses.
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="w-12 h-12 border border-white/20 text-white hover:border-accent hover:text-accent flex items-center justify-center transition-all duration-300 rounded-sm">
+              <i class="fab fa-facebook-f text-base"></i>
+            </a>
+            <a href="#" class="w-12 h-12 border border-white/20 text-white hover:border-accent hover:text-accent flex items-center justify-center transition-all duration-300 rounded-sm">
+              <i class="fab fa-instagram text-base"></i>
+            </a>
+            <a href="#" class="w-12 h-12 border border-white/20 text-white hover:border-accent hover:text-accent flex items-center justify-center transition-all duration-300 rounded-sm">
+              <i class="fab fa-x-twitter text-base"></i>
+            </a>
+            <a href="#" class="w-12 h-12 border border-white/20 text-white hover:border-accent hover:text-accent flex items-center justify-center transition-all duration-300 rounded-sm">
+              <i class="fab fa-youtube text-base"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm uppercase tracking-[0.2em] font-medium mb-8 text-white">Quick Links</h4>
+          <ul class="flex flex-col gap-5">
+            <li><a href="index.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Home</a></li>
+            <li><a href="about.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">About Us</a></li>
+            <li><a href="blog.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Air Quality Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm uppercase tracking-[0.2em] font-medium mb-8 text-white">Our Services</h4>
+          <ul class="flex flex-col gap-5">
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Mold Inspection</a></li>
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Mold Remediation</a></li>
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Air Quality Testing</a></li>
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Moisture Control</a></li>
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Prevention Plans</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm uppercase tracking-[0.2em] font-medium mb-8 text-white">Contact Us</h4>
+          <ul class="flex flex-col gap-6">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-accent mt-1 me-4 text-base"></i>
+              <span class="text-base text-gray-400 font-medium">Serving Salem, Tamil Nadu, India & Surrounding Areas</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone text-accent me-4 text-base"></i>
+              <a href="tel:+919876543210" class="text-base text-gray-400 hover:text-accent transition-colors font-medium">+91 98765 43210</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-accent me-4 text-base"></i>
+              <a href="mailto:info@pureair.com" class="text-base text-gray-400 hover:text-accent transition-colors font-medium">info@pureair.com</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm tracking-wider uppercase mb-4 md:mb-0 font-medium">
+          © 2026 PureAir Mold Remediation & Air Quality Testing. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a href="login.html" class="text-gray-400 hover:text-accent text-sm tracking-wider uppercase font-medium transition-colors duration-300">Client Login</a>
+          <a href="#" class="text-gray-400 hover:text-accent text-sm tracking-wider uppercase font-medium transition-colors duration-300">Privacy</a>
+          <a href="#" class="text-gray-400 hover:text-accent text-sm tracking-wider uppercase font-medium transition-colors duration-300">Terms</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const html = document.documentElement;
+
+    function toggleTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+    if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
+
+    // RTL Toggle
+    const rtlToggle = document.getElementById('rtl-toggle');
+    const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+
+    function toggleRTL() {
+      if (html.getAttribute('dir') === 'rtl') {
+        html.removeAttribute('dir');
+        localStorage.setItem('direction', 'ltr');
+      } else {
+        html.setAttribute('dir', 'rtl');
+        localStorage.setItem('direction', 'rtl');
+      }
+    }
+
+    if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+    if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+    if (localStorage.getItem('direction') === 'rtl') html.setAttribute('dir', 'rtl');
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (mobileMenuButton) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('flex');
+        } else {
+          mobileMenu.classList.remove('flex');
+        }
+      });
+    }
+
+    // Mobile Dropdowns Toggle Function
+    function setupMobileDropdown(dropdownId, menuId, iconId) {
+      const dropdown = document.getElementById(dropdownId);
+      const menu = document.getElementById(menuId);
+      const icon = document.getElementById(iconId);
+
+      if (dropdown && menu && icon) {
+        dropdown.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+          if (menu.classList.contains('hidden')) {
+            icon.classList.remove('fa-minus');
+            icon.classList.add('fa-plus');
+            menu.classList.remove('flex');
+          } else {
+            icon.classList.remove('fa-plus');
+            icon.classList.add('fa-minus');
+            menu.classList.add('flex');
+          }
+        });
+      }
+    }
+
+    setupMobileDropdown('mobile-home-dropdown', 'mobile-home-menu', 'mobile-home-icon');
+    setupMobileDropdown('mobile-dashboard-dropdown', 'mobile-dashboard-menu', 'mobile-dashboard-icon');
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark:hidden">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg?v=2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { 
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            'accent': '#0077B6',
+            'secondary': '#005F8F',
+            'brand-dark': '#0F172A',
+            'brand-light': '#FFFFFF',
+            'brand-muted': '#4B5563',
+            'brand-surface': '#F8FAFC'
+          }
+        }
+      }
+    }
+  </script>
+  <title>Client Dashboard · PureAir</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    [dir="rtl"] { direction: rtl; }
+    
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* Dashboard cards */
+    .dashboard-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px -8px rgba(0,119,182,0.08);
+    }
+    .dark .dashboard-card {
+      background-color: #1A1A1A;
+      border-color: rgba(255,255,255,0.05);
+    }
+    .dashboard-card:hover {
+      border-color: #0077B6;
+      box-shadow: 0 12px 28px -12px rgba(0,119,182,0.2);
+    }
+
+    /* Sidebar */
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      border-radius: 1rem;
+      color: #4B5563;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .dark .sidebar-link { color: #94A3B8; }
+    .sidebar-link:hover, .sidebar-link.active {
+      background: linear-gradient(135deg, #0077B6 0%, #005F8F 100%);
+      color: white;
+    }
+    .sidebar-link:hover svg, .sidebar-link.active svg { stroke: white; color: white; }
+
+    /* Badges */
+    .badge-success { background: rgba(43,122,75,0.12); color: #2B7A4B; font-weight: 600; }
+    .badge-warning { background: rgba(230,179,37,0.15); color: #B8860B; font-weight: 600; }
+    .badge-danger { background: rgba(200,75,49,0.12); color: #C84B31; font-weight: 600; }
+    .dark .badge-success { color: #6FBF4C; background: rgba(111,191,76,0.15); }
+    .dark .badge-warning { color: #E6B325; }
+    .dark .badge-danger { color: #E6775E; }
+
+    /* Logout button */
+    .logout-btn {
+      background-color: #C84B31 !important;
+      color: white !important;
+      border: none !important;
+      justify-content: center;
+      margin-top: 1rem !important;
+      box-shadow: 0 4px 10px rgba(200, 75, 49, 0.2);
+    }
+    .logout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(200, 75, 49, 0.3);
+      background: linear-gradient(135deg, #C84B31 0%, #A63A24 100%) !important;
+    }
+    .logout-btn svg { stroke: white !important; }
+
+    /* Overlay */
+    #mobile-overlay {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+    }
+    #mobile-overlay.active { opacity: 1; pointer-events: auto; }
+
+    /* RTL adjustments */
+    html[dir="rtl"] .sidebar-link { flex-direction: row-reverse; }
+    html[dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+    html[dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+
+    /* AQI meter */
+    .aqi-meter {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2B7A4B 0%, #E6B325 50%, #C84B31 100%);
+      position: relative;
+    }
+    .aqi-marker {
+      position: absolute;
+      top: -4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: white;
+      border: 3px solid #0077B6;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transform: translateX(-50%);
+    }
+
+    /* Inputs */
+    input, select, textarea {
+      color: #1A1A1A;
+      background-color: #F8FAFC;
+      border-color: #E5E7EB;
+    }
+    .dark input, .dark select, .dark textarea {
+      color: #FFFFFF;
+      background-color: #1E293B;
+      border-color: #1E293B;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #0077B6 !important;
+      box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+    }
+
+    /* Reveal animation */
+    .reveal {
+      animation: fadeInUp 0.6s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hidden sections */
+    .admin-section.hidden { display: none !important; }
+
+    /* Timeline connecting line */
+    .timeline-container { position: relative; }
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: rgba(0,119,182,0.3);
+    }
+    html[dir="rtl"] .timeline-container::before { left: auto; right: 6px; }
+
+    /* Divider line */
+    .divider-v {
+      width: 1px;
+      background-color: #E5E7EB;
+    }
+    .dark .divider-v { background-color: #1E293B; }
+
+    /* Table rows */
+    .table-row { border-bottom: 1px solid #E5E7EB; }
+    .dark .table-row { border-bottom-color: #1E293B; }
+  </style>
+</head>
+<body class="antialiased bg-white dark:bg-brand-dark text-brand-dark dark:text-white">
+
+  <!-- ============================================================ -->
+  <!-- TOP NAV (PureAir branding — same as index.html)              -->
+  <!-- ============================================================ -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white dark:bg-brand-dark border-b border-gray-200 dark:border-white/10 h-[73px] transition-colors duration-300">
+    <div class="px-3 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+
+      <!-- Left: Mobile menu + Logo -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <button id="mobile-menu-toggle" class="lg:hidden p-1.5 sm:p-2 rounded-xl hover:bg-brand-surface dark:hover:bg-[#1E293B] transition">
+          <svg class="w-6 h-6 text-brand-dark dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-brand-dark dark:bg-white rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:shadow-accent/30 shrink-0">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-accent dark:text-brand-dark group-hover:text-white transition-colors fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 1L2 6v12l10 5 10-5V6L12 1zm0 2.3l7.5 3.75-3.5 1.75-7.5-3.75L12 3.3zM4 7.8l7 3.5v8.4l-7-3.5V7.8zm9 11.9v-8.4l7-3.5v8.4l-7 3.5z"/>
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-lg sm:text-xl md:text-2xl font-black tracking-tight text-brand-dark dark:text-brand-light uppercase leading-none">Pure<span class="text-accent">Air</span></span>
+            <span class="text-[8px] sm:text-[9px] font-bold tracking-[0.22em] text-accent uppercase mt-0.5 sm:mt-1 leading-none">Mold & Air Quality</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right: Status + Toggles + User -->
+      <div class="flex items-center gap-1 sm:gap-3">
+
+        <!-- Air Quality Status Pill -->
+        <div class="hidden sm:flex items-center gap-2 bg-brand-surface dark:bg-[#1E293B] px-3 py-2 rounded-xl">
+          <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+          <span class="text-xs font-medium text-brand-dark dark:text-white">AQ: Good</span>
+        </div>
+
+        <!-- Dark Mode Toggle (same as index.html) -->
+        <button id="theme-toggle" class="relative w-[64px] sm:w-[72px] h-[32px] sm:h-[34px] flex items-center bg-gray-200 dark:bg-[#1E293B] rounded-full p-1 transition-colors duration-300 focus:outline-none border border-gray-300 dark:border-gray-700 overflow-hidden" title="Toggle Theme">
+          <span class="text-[8px] sm:text-[9px] font-medium text-gray-500 absolute end-2 sm:end-2.5 dark:opacity-0 transition-opacity duration-300 tracking-wider">LIGHT</span>
+          <span class="text-[8px] sm:text-[9px] font-medium text-accent absolute start-2 sm:start-2.5 opacity-0 dark:opacity-100 transition-opacity duration-300 tracking-wider">DARK</span>
+          
+          <div class="w-[22px] h-[22px] sm:w-[24px] sm:h-[24px] bg-white dark:bg-brand-dark border border-gray-200 dark:border-gray-600 rounded-full shadow-sm transform transition-transform duration-300 flex items-center justify-center dark:translate-x-[32px] sm:dark:translate-x-[38px] rtl:dark:-translate-x-[32px] rtl:sm:dark:-translate-x-[38px] z-10">
+            <i class="fas fa-sun text-[10px] sm:text-[11px] text-accent dark:hidden block"></i>
+            <i class="fas fa-moon text-[10px] sm:text-[11px] text-accent hidden dark:block"></i>
+          </div>
+        </button>
+
+        <!-- RTL Toggle (same as index.html) -->
+        <button id="rtl-toggle" class="text-xs font-medium text-gray-400 hover:text-accent transition-colors duration-300 ms-1 sm:ms-2" title="Toggle RTL">
+          RTL
+        </button>
+
+        <!-- Divider -->
+        <div class="hidden sm:block h-8 w-px bg-gray-200 dark:bg-gray-800 mx-2"></div>
+
+        <!-- User Avatar -->
+        <div class="flex items-center gap-2 sm:pl-2">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center text-white font-bold text-xs sm:text-sm">JD</div>
+          <div class="hidden md:block">
+            <p class="text-sm font-medium text-brand-dark dark:text-white">Jane Doe</p>
+            <p class="text-xs text-brand-muted dark:text-gray-400">Client</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-overlay" class="lg:hidden"></div>
+
+  <!-- ============================================================ -->
+  <!-- MAIN LAYOUT                                                  -->
+  <!-- ============================================================ -->
+  <div class="flex min-h-screen pt-[73px]">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="fixed top-0 lg:top-[73px] start-0 w-72 lg:w-64 h-full lg:h-[calc(100vh-73px)] z-[60] transform -translate-x-full lg:translate-x-0 rtl:translate-x-full lg:rtl:translate-x-0 transition-transform duration-300 bg-brand-surface dark:bg-[#0A0A0A] border-e border-gray-200 dark:border-white/10 overflow-y-auto shrink-0">
+      <div class="p-5">
+        <div class="flex lg:hidden justify-between items-center mb-6">
+          <span class="font-bold text-accent text-sm uppercase tracking-widest">Menu</span>
+          <button id="close-sidebar" class="p-2 hover:bg-white dark:hover:bg-[#1E293B] rounded-lg">
+            <svg class="w-5 h-5 text-brand-dark dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <nav class="flex flex-col gap-1">
+          <p class="text-[10px] uppercase tracking-widest text-brand-muted dark:text-gray-400 font-bold px-3 mb-2">Dashboard</p>
+
+          <a href="#" data-section="overview" class="sidebar-link active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M6 14h6m-6 4h12M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" />
+            </svg>
+            <span>Overview</span>
+          </a>
+
+          <a href="#" data-section="schedule" class="sidebar-link">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span>Book Inspection</span>
+          </a>
+
+          <a href="#" data-section="tracking" class="sidebar-link">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+            <span>Job Progress</span>
+            <span class="ms-auto bg-accent text-white text-[10px] px-2 py-0.5 rounded-full font-bold">1</span>
+          </a>
+
+          <a href="#" data-section="reports" class="sidebar-link">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Air Quality Reports</span>
+          </a>
+
+          <a href="#" data-section="invoices" class="sidebar-link">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+            <span>Invoices</span>
+          </a>
+
+          <a href="#" data-section="profile" class="sidebar-link">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span>Profile</span>
+          </a>
+
+          <a href="#" id="logoutBtn" class="sidebar-link logout-btn !py-2.5 !px-3 gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
+            </svg>
+            <span class="font-medium">Logout</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 min-w-0 space-y-6 lg:ms-64 px-4 sm:px-6 lg:px-8 py-6">
+
+      <!-- ============================================== -->
+      <!-- OVERVIEW                                        -->
+      <!-- ============================================== -->
+      <div id="overview" class="admin-section">
+        <div class="mb-8">
+          <h1 class="text-2xl sm:text-3xl font-serif font-bold text-brand-dark dark:text-white">Welcome back, Jane</h1>
+          <p class="text-brand-muted dark:text-gray-400 mt-1">Track your inspections, remediation progress, and air quality reports — all in one place.</p>
+        </div>
+
+        <!-- Stat Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+          <div class="dashboard-card p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-brand-muted dark:text-gray-400 text-sm">Active Jobs</p>
+                <p class="text-3xl font-black mt-1 text-brand-dark dark:text-white">1</p>
+                <p class="text-xs text-emerald-600 mt-2">Remediation in progress</p>
+              </div>
+              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+                <i class="fa-solid fa-shield-virus text-2xl"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-brand-muted dark:text-gray-400 text-sm">Completed Jobs</p>
+                <p class="text-3xl font-black mt-1 text-brand-dark dark:text-white">3</p>
+                <p class="text-xs text-emerald-600 mt-2">100% clearance rate</p>
+              </div>
+              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+                <i class="fa-solid fa-circle-check text-2xl"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-brand-muted dark:text-gray-400 text-sm">Air Quality Score</p>
+                <p class="text-3xl font-black mt-1 text-brand-dark dark:text-white">92</p>
+                <p class="text-xs text-emerald-600 mt-2">Excellent (Grade A)</p>
+              </div>
+              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+                <i class="fa-solid fa-wind text-2xl"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-brand-muted dark:text-gray-400 text-sm">Pending Invoices</p>
+                <p class="text-3xl font-black mt-1 text-brand-dark dark:text-white">$899</p>
+                <p class="text-xs text-amber-600 mt-2">1 invoice due</p>
+              </div>
+              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+                <i class="fa-solid fa-receipt text-2xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Air Quality Snapshot -->
+        <div class="dashboard-card p-6 mt-6 reveal">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <h3 class="font-bold text-lg mb-1 text-brand-dark dark:text-white">Current Air Quality</h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400">Latest reading from your Salem residence</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <div>
+                <p class="text-4xl font-black text-accent">92</p>
+                <p class="text-xs text-brand-muted dark:text-gray-400 text-center">AQI</p>
+              </div>
+              <div class="divider-v h-12"></div>
+              <div>
+                <p class="text-sm font-bold text-emerald-600">Excellent</p>
+                <p class="text-xs text-brand-muted dark:text-gray-400">Last tested May 22, 2026</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div class="aqi-meter relative">
+              <div class="aqi-marker" style="left: 25%;"></div>
+            </div>
+            <div class="flex justify-between mt-2 text-xs text-brand-muted dark:text-gray-400">
+              <span>Poor</span>
+              <span>Moderate</span>
+              <span>Good</span>
+              <span>Excellent</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-white/10">
+            <div>
+              <p class="text-xs text-brand-muted dark:text-gray-400">Mold Spores</p>
+              <p class="text-lg font-bold text-emerald-600">Low</p>
+            </div>
+            <div>
+              <p class="text-xs text-brand-muted dark:text-gray-400">VOCs</p>
+              <p class="text-lg font-bold text-emerald-600">0.2 ppm</p>
+            </div>
+            <div>
+              <p class="text-xs text-brand-muted dark:text-gray-400">Humidity</p>
+              <p class="text-lg font-bold text-emerald-600">42%</p>
+            </div>
+            <div>
+              <p class="text-xs text-brand-muted dark:text-gray-400">PM2.5</p>
+              <p class="text-lg font-bold text-emerald-600">8 µg/m³</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 reveal">
+          <a href="#schedule" onclick="activateSection('schedule'); return false;" class="dashboard-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-16 h-16 bg-brand-surface dark:bg-[#1E293B] rounded-full flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
+              <i class="fa-solid fa-calendar-plus text-2xl text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-1 text-brand-dark dark:text-white">Book Inspection</h3>
+            <p class="text-xs text-brand-muted dark:text-gray-400">Schedule a mold inspection</p>
+          </a>
+
+          <a href="#tracking" onclick="activateSection('tracking'); return false;" class="dashboard-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-16 h-16 bg-brand-surface dark:bg-[#1E293B] rounded-full flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
+              <i class="fa-solid fa-list-check text-2xl text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-1 text-brand-dark dark:text-white">Track Job Progress</h3>
+            <p class="text-xs text-brand-muted dark:text-gray-400">See live remediation status</p>
+          </a>
+
+          <a href="#reports" onclick="activateSection('reports'); return false;" class="dashboard-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-16 h-16 bg-brand-surface dark:bg-[#1E293B] rounded-full flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
+              <i class="fa-solid fa-file-medical-alt text-2xl text-accent group-hover:text-white transition-colors"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-1 text-brand-dark dark:text-white">Air Quality Reports</h3>
+            <p class="text-xs text-brand-muted dark:text-gray-400">Access lab results & clearances</p>
+          </a>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="dashboard-card p-6 mt-6 reveal">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-bold text-lg text-brand-dark dark:text-white">Recent Activity</h3>
+            <button class="text-accent text-sm font-bold hover:underline">View All</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead class="border-b border-gray-200 dark:border-white/10 text-brand-muted dark:text-gray-400 text-xs uppercase tracking-wider">
+                <tr>
+                  <th class="pb-3">Ref #</th>
+                  <th class="pb-3">Service</th>
+                  <th class="pb-3">Location</th>
+                  <th class="pb-3">Status</th>
+                  <th class="pb-3">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row">
+                  <td class="py-4 font-mono font-bold text-accent">#PA-5092</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Full Mold Remediation</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Salem, TN</td>
+                  <td class="py-4"><span class="badge-warning px-3 py-1 rounded-full text-xs font-bold">In Progress</span></td>
+                  <td class="py-4"><button onclick="activateSection('tracking')" class="text-accent hover:underline font-bold">Track</button></td>
+                </tr>
+                <tr class="table-row">
+                  <td class="py-4 font-mono font-bold text-accent">#PA-5120</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Air Quality Testing</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Salem, TN</td>
+                  <td class="py-4"><span class="badge-success px-3 py-1 rounded-full text-xs font-bold">Completed</span></td>
+                  <td class="py-4"><button onclick="activateSection('reports')" class="text-accent hover:underline font-bold">View Report</button></td>
+                </tr>
+                <tr>
+                  <td class="py-4 font-mono font-bold text-accent">#PA-5184</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Mold Inspection</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Coimbatore, TN</td>
+                  <td class="py-4"><span class="badge-success px-3 py-1 rounded-full text-xs font-bold">Completed</span></td>
+                  <td class="py-4"><button onclick="activateSection('reports')" class="text-accent hover:underline font-bold">View Report</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- SCHEDULE INSPECTION                             -->
+      <!-- ============================================== -->
+      <div id="schedule" class="admin-section hidden">
+        <div class="dashboard-card p-6 reveal">
+          <h2 class="text-2xl font-serif font-bold mb-2 text-brand-dark dark:text-white"><span class="text-accent">📅</span> Book an Inspection</h2>
+          <p class="text-brand-muted dark:text-gray-400 mb-6">Fill in the details and a certified specialist will confirm your appointment.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block font-bold mb-1 text-brand-dark dark:text-white text-sm">Full Name</label>
+              <input type="text" placeholder="Jane Doe" class="w-full px-4 py-3 rounded-xl border text-sm" value="Jane Doe">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-brand-dark dark:text-white text-sm">Email</label>
+              <input type="email" placeholder="jane@example.com" class="w-full px-4 py-3 rounded-xl border text-sm" value="jane@example.com">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-brand-dark dark:text-white text-sm">Phone</label>
+              <input type="tel" placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl border text-sm" value="+91 98765 43210">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-brand-dark dark:text-white text-sm">Property Type</label>
+              <select class="w-full px-4 py-3 rounded-xl border text-sm">
+                <option>Residential Home</option>
+                <option selected>Apartment / Condo</option>
+                <option>Commercial Building</option>
+                <option>Industrial Facility</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-brand-dark dark:text-white text-sm">Service Needed</label>
+              <select class="w-full px-4 py-3 rounded-xl border text-sm">
+                <option selected>Mold Inspection & Testing</option>
+                <option>Full Mold Remediation</option>
+                <option>Indoor Air Quality Testing</option>
+                <option>Moisture Control & Prevention</option>
+                <option>HVAC & Duct Cleaning</option>
+                <option>Clearance Verification</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-brand-dark dark:text-white text-sm">Preferred Date</label>
+              <input type="date" class="w-full px-4 py-3 rounded-xl border text-sm" value="2026-06-01">
+            </div>
+            <div class="md:col-span-2">
+              <label class="block font-bold mb-1 text-brand-dark dark:text-white text-sm">Property Address</label>
+              <input type="text" placeholder="42 Fairlands Avenue, Salem, TN 636016" class="w-full px-4 py-3 rounded-xl border text-sm" value="42 Fairlands Avenue, Salem, TN 636016">
+            </div>
+            <div class="md:col-span-2">
+              <label class="block font-bold mb-1 text-brand-dark dark:text-white text-sm">Describe Your Concern</label>
+              <textarea rows="4" placeholder="Tell us what you're experiencing — musty smell, visible mold, water damage, etc." class="w-full px-4 py-3 rounded-xl border text-sm resize-none">Noticed a musty odor in the basement after recent rains. Would like a full inspection.</textarea>
+            </div>
+          </div>
+
+          <button class="mt-6 px-8 py-3 rounded-xl shadow-md text-white font-bold text-sm uppercase tracking-widest bg-gradient-to-br from-accent to-secondary hover:opacity-90 transition-all">Submit Request</button>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- JOB PROGRESS                                    -->
+      <!-- ============================================== -->
+      <div id="tracking" class="admin-section hidden">
+        <div class="dashboard-card p-6 reveal">
+          <h2 class="text-2xl font-serif font-bold mb-2 text-brand-dark dark:text-white"><span class="text-accent">📍</span> Job Progress Tracker</h2>
+          <p class="text-brand-muted dark:text-gray-400 mb-6">Real-time status of your active remediation project.</p>
+
+          <div class="bg-brand-surface dark:bg-[#1E293B] rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+              <div>
+                <p class="text-sm text-brand-muted dark:text-gray-400">Active Job</p>
+                <p class="font-bold text-xl text-brand-dark dark:text-white">#PA-5092 · Full Mold Remediation</p>
+                <p class="text-xs text-brand-muted dark:text-gray-400 mt-1">42 Fairlands Avenue, Salem, TN</p>
+              </div>
+              <span class="bg-accent text-white px-4 py-1 rounded-full text-sm font-bold">Day 3 of 5</span>
+            </div>
+
+            <div class="mb-8">
+              <div class="flex justify-between text-xs text-brand-muted dark:text-gray-400 mb-2">
+                <span>Progress</span>
+                <span class="font-bold text-accent">60% Complete</span>
+              </div>
+              <div class="w-full h-3 bg-gray-200 dark:bg-[#0F172A] rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-accent to-secondary rounded-full transition-all" style="width: 60%;"></div>
+              </div>
+            </div>
+
+            <div class="timeline-container ps-8">
+              <ul class="space-y-8">
+                <li class="relative flex items-start gap-4">
+                  <span class="w-4 h-4 rounded-full bg-accent mt-1 z-10 flex-shrink-0"></span>
+                  <div>
+                    <h5 class="font-bold text-brand-dark dark:text-white">Initial Inspection Complete</h5>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">May 20, 9:30 AM · By Dr. Elena Marsh</p>
+                  </div>
+                </li>
+                <li class="relative flex items-start gap-4">
+                  <span class="w-4 h-4 rounded-full bg-accent mt-1 z-10 flex-shrink-0"></span>
+                  <div>
+                    <h5 class="font-bold text-brand-dark dark:text-white">Containment Setup Complete</h5>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">May 21, 10:15 AM · Negative air pressure established</p>
+                  </div>
+                </li>
+                <li class="relative flex items-start gap-4">
+                  <span class="w-4 h-4 rounded-full bg-accent mt-1 z-10 animate-pulse flex-shrink-0"></span>
+                  <div>
+                    <h5 class="font-bold text-accent">HEPA Vacuuming & Treatment</h5>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">In progress · Est. completion May 22, 5 PM</p>
+                  </div>
+                </li>
+                <li class="relative flex items-start gap-4 opacity-50">
+                  <span class="w-4 h-4 rounded-full bg-white dark:bg-[#0F172A] border-2 border-gray-300 dark:border-gray-700 mt-1 flex-shrink-0"></span>
+                  <div>
+                    <h5 class="font-bold text-brand-dark dark:text-white">Clearance Testing</h5>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">Scheduled May 23, 10 AM</p>
+                  </div>
+                </li>
+                <li class="relative flex items-start gap-4 opacity-50">
+                  <span class="w-4 h-4 rounded-full bg-white dark:bg-[#0F172A] border-2 border-gray-300 dark:border-gray-700 mt-1 flex-shrink-0"></span>
+                  <div>
+                    <h5 class="font-bold text-brand-dark dark:text-white">Final Report & Warranty</h5>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">Pending</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div class="dashboard-card p-6">
+              <h3 class="font-bold text-lg mb-4 text-brand-dark dark:text-white">Crew On Site</h3>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Lead" class="w-10 h-10 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-sm text-brand-dark dark:text-white">Marcus Reed</p>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">Lead Remediation Specialist</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Tech" class="w-10 h-10 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-sm text-brand-dark dark:text-white">Priya Nair</p>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">IAQ Scientist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-card p-6">
+              <h3 class="font-bold text-lg mb-4 text-brand-dark dark:text-white">Quick Contact</h3>
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-phone text-accent"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">Call Coordinator</p>
+                    <a href="tel:+919876543210" class="font-bold text-sm hover:text-accent text-brand-dark dark:text-white">+91 98765 43210</a>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-envelope text-accent"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-brand-muted dark:text-gray-400">Email Support</p>
+                    <a href="mailto:support@pureair.com" class="font-bold text-sm hover:text-accent text-brand-dark dark:text-white">support@pureair.com</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- AIR QUALITY REPORTS                             -->
+      <!-- ============================================== -->
+      <div id="reports" class="admin-section hidden">
+        <div class="dashboard-card p-6 reveal">
+          <h2 class="text-2xl font-serif font-bold mb-2 text-brand-dark dark:text-white"><span class="text-accent">📊</span> Air Quality Reports</h2>
+          <p class="text-brand-muted dark:text-gray-400 mb-6">Access lab-verified air quality test results and clearance certificates.</p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead class="border-b border-gray-200 dark:border-white/10 text-brand-muted dark:text-gray-400 text-xs uppercase tracking-wider">
+                <tr>
+                  <th class="pb-3">Report ID</th>
+                  <th class="pb-3">Date</th>
+                  <th class="pb-3">Test Type</th>
+                  <th class="pb-3">Result</th>
+                  <th class="pb-3">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row">
+                  <td class="py-4 font-mono font-bold text-accent">RPT-1024</td>
+                  <td class="py-4 text-brand-dark dark:text-white">May 22, 2026</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Indoor Air Quality (IAQ)</td>
+                  <td class="py-4"><span class="badge-success px-3 py-1 rounded-full text-xs font-bold">Excellent</span></td>
+                  <td class="py-4"><button class="text-accent hover:underline font-bold">Download PDF</button></td>
+                </tr>
+                <tr class="table-row">
+                  <td class="py-4 font-mono font-bold text-accent">RPT-1012</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Apr 30, 2026</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Mold Spore Count</td>
+                  <td class="py-4"><span class="badge-success px-3 py-1 rounded-full text-xs font-bold">Pass</span></td>
+                  <td class="py-4"><button class="text-accent hover:underline font-bold">Download PDF</button></td>
+                </tr>
+                <tr>
+                  <td class="py-4 font-mono font-bold text-accent">RPT-0998</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Apr 12, 2026</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Post-Remediation Clearance</td>
+                  <td class="py-4"><span class="badge-success px-3 py-1 rounded-full text-xs font-bold">Passed</span></td>
+                  <td class="py-4"><button class="text-accent hover:underline font-bold">Download PDF</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-8 pt-8 border-t border-gray-200 dark:border-white/10">
+            <h3 class="font-bold text-lg mb-4 text-brand-dark dark:text-white">Air Quality Trend (Last 6 Months)</h3>
+            <div class="bg-brand-surface dark:bg-[#1E293B] rounded-2xl p-4 border border-gray-100 dark:border-white/5" style="height: 300px; position: relative;">
+              <canvas id="aqiChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- INVOICES                                        -->
+      <!-- ============================================== -->
+      <div id="invoices" class="admin-section hidden">
+        <div class="dashboard-card p-6 reveal">
+          <h2 class="text-2xl font-serif font-bold mb-2 text-brand-dark dark:text-white"><span class="text-accent">🧾</span> Invoices</h2>
+          <p class="text-brand-muted dark:text-gray-400 mb-6">Full charge breakdown for your completed services.</p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead class="border-b border-gray-200 dark:border-white/10 text-brand-muted dark:text-gray-400 text-xs uppercase tracking-wider">
+                <tr>
+                  <th class="pb-3">Invoice #</th>
+                  <th class="pb-3">Service</th>
+                  <th class="pb-3">Date</th>
+                  <th class="pb-3">Amount</th>
+                  <th class="pb-3">Status</th>
+                  <th class="pb-3">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row">
+                  <td class="py-4 font-mono font-bold text-brand-dark dark:text-white">INV-1024</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Full Mold Remediation · #PA-5092</td>
+                  <td class="py-4 text-brand-dark dark:text-white">May 18, 2026</td>
+                  <td class="py-4 font-bold text-brand-dark dark:text-white">$899</td>
+                  <td class="py-4"><span class="badge-warning px-3 py-1 rounded-full text-xs font-bold">Due</span></td>
+                  <td class="py-4"><button class="text-accent hover:underline font-bold">Pay Now</button></td>
+                </tr>
+                <tr class="table-row">
+                  <td class="py-4 font-mono font-bold text-brand-dark dark:text-white">INV-1012</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Air Quality Testing · #PA-5120</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Apr 30, 2026</td>
+                  <td class="py-4 font-bold text-brand-dark dark:text-white">$249</td>
+                  <td class="py-4"><span class="badge-success px-3 py-1 rounded-full text-xs font-bold">Paid</span></td>
+                  <td class="py-4"><button class="text-accent hover:underline font-bold">Download</button></td>
+                </tr>
+                <tr>
+                  <td class="py-4 font-mono font-bold text-brand-dark dark:text-white">INV-0998</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Mold Inspection · #PA-5184</td>
+                  <td class="py-4 text-brand-dark dark:text-white">Apr 12, 2026</td>
+                  <td class="py-4 font-bold text-brand-dark dark:text-white">$199</td>
+                  <td class="py-4"><span class="badge-success px-3 py-1 rounded-full text-xs font-bold">Paid</span></td>
+                  <td class="py-4"><button class="text-accent hover:underline font-bold">Download</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- PROFILE                                         -->
+      <!-- ============================================== -->
+      <div id="profile" class="admin-section hidden">
+        <div class="dashboard-card p-6 reveal">
+          <h2 class="text-2xl font-serif font-bold text-brand-dark dark:text-white"><span class="text-accent">👤</span> My Profile</h2>
+          <p class="text-brand-muted dark:text-gray-400 mt-1 mb-6">Manage your account and property information.</p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="font-bold block mb-1 text-brand-dark dark:text-white text-sm">Full Name</label>
+              <input type="text" class="w-full px-4 py-3 rounded-xl border text-sm" value="Jane Doe">
+            </div>
+            <div>
+              <label class="font-bold block mb-1 text-brand-dark dark:text-white text-sm">Email</label>
+              <input type="email" class="w-full px-4 py-3 rounded-xl border text-sm" value="jane@pureair.com">
+            </div>
+            <div>
+              <label class="font-bold block mb-1 text-brand-dark dark:text-white text-sm">Phone</label>
+              <input type="tel" class="w-full px-4 py-3 rounded-xl border text-sm" value="+91 98765 43210">
+            </div>
+            <div>
+              <label class="font-bold block mb-1 text-brand-dark dark:text-white text-sm">Property Type</label>
+              <select class="w-full px-4 py-3 rounded-xl border text-sm">
+                <option>Residential Home</option>
+                <option selected>Apartment / Condo</option>
+                <option>Commercial Building</option>
+                <option>Industrial Facility</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="font-bold block mb-1 text-brand-dark dark:text-white text-sm">Default Address</label>
+              <input type="text" class="w-full px-4 py-3 rounded-xl border text-sm" value="42 Fairlands Avenue, Salem, TN 636016">
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-gray-200 dark:border-white/10">
+            <h3 class="font-bold text-lg mb-4 text-brand-dark dark:text-white">Notification Preferences</h3>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 rounded" style="accent-color: #0077B6;" checked>
+                <span class="text-sm text-brand-dark dark:text-white">Email me job status updates</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 rounded" style="accent-color: #0077B6;" checked>
+                <span class="text-sm text-brand-dark dark:text-white">Send air quality alerts</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 rounded" style="accent-color: #0077B6;">
+                <span class="text-sm text-brand-dark dark:text-white">Receive seasonal prevention tips</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="mt-6 px-8 py-3 rounded-xl shadow-md text-white font-bold text-sm uppercase tracking-widest bg-gradient-to-br from-accent to-secondary hover:opacity-90 transition-all">Update Profile</button>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="text-center text-xs text-brand-muted dark:text-gray-400 border-t border-gray-200 dark:border-white/10 pt-8 pb-4">
+        <p>© 2026 PureAir — Mold Remediation & Air Quality Testing</p>
+        <div class="flex justify-center gap-6 mt-4">
+          <a href="#" class="hover:text-accent">Privacy</a>
+          <a href="#" class="hover:text-accent">Terms</a>
+          <a href="#" class="hover:text-accent">Support</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+
+      // ==========================================
+      // THEME TOGGLE (same as index.html)
+      // ==========================================
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          html.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          html.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      // Initialize theme from storage
+      if (localStorage.getItem('theme') === 'dark') {
+        html.classList.add('dark');
+      }
+
+      themeToggle?.addEventListener('click', function() {
+        const isDark = html.classList.contains('dark');
+        setTheme(isDark ? 'light' : 'dark');
+        
+        // Refresh chart colors if visible
+        if (aqiChartInstance && !document.getElementById('reports').classList.contains('hidden')) {
+          aqiChartInstance.destroy();
+          aqiChartInstance = null;
+          setTimeout(initAqiChart, 50);
+        }
+      });
+
+      // ==========================================
+      // RTL TOGGLE (same as index.html)
+      // ==========================================
+      const rtlToggle = document.getElementById('rtl-toggle');
+
+      function toggleRTL() {
+        if (html.getAttribute('dir') === 'rtl') {
+          html.removeAttribute('dir');
+          localStorage.setItem('direction', 'ltr');
+        } else {
+          html.setAttribute('dir', 'rtl');
+          localStorage.setItem('direction', 'rtl');
+        }
+      }
+
+      if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+      if (localStorage.getItem('direction') === 'rtl') html.setAttribute('dir', 'rtl');
+
+      // ==========================================
+      // MOBILE SIDEBAR
+      // ==========================================
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const closeSidebar = document.getElementById('close-sidebar');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('mobile-overlay');
+
+      function toggleMobile(open) {
+        sidebar.classList.toggle('-translate-x-full', !open);
+        overlay.classList.toggle('active', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      menuToggle?.addEventListener('click', () => toggleMobile(true));
+      closeSidebar?.addEventListener('click', () => toggleMobile(false));
+      overlay?.addEventListener('click', () => toggleMobile(false));
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+          toggleMobile(false);
+        }
+      });
+
+      // ==========================================
+      // SECTION SWITCHING
+      // ==========================================
+      const sections = ['overview', 'schedule', 'tracking', 'reports', 'invoices', 'profile'];
+      const links = document.querySelectorAll('.sidebar-link');
+
+      window.activateSection = function (sectionId) {
+        sections.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.add('hidden');
+        });
+        const target = document.getElementById(sectionId);
+        if (target) target.classList.remove('hidden');
+
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.dataset.section === sectionId) link.classList.add('active');
+        });
+
+        if (window.innerWidth < 1024) toggleMobile(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        if (sectionId === 'reports') {
+          setTimeout(initAqiChart, 50);
+        }
+      };
+
+      links.forEach(link => {
+        if (link.dataset.section) {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            activateSection(link.dataset.section);
+          });
+        }
+      });
+
+      // ==========================================
+      // LOGOUT
+      // ==========================================
+      document.getElementById('logoutBtn')?.addEventListener('click', function (e) {
+        e.preventDefault();
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = 'login.html';
+      });
+
+      // ==========================================
+      // AIR QUALITY CHART
+      // ==========================================
+      let aqiChartInstance = null;
+      function initAqiChart() {
+        const canvas = document.getElementById('aqiChart');
+        if (!canvas || aqiChartInstance) return;
+
+        const isDark = html.classList.contains('dark');
+        const textColor = isDark ? '#94A3B8' : '#4B5563';
+        const gridColor = isDark ? '#1E293B' : '#E5E7EB';
+
+        aqiChartInstance = new Chart(canvas, {
+          type: 'line',
+          data: {
+            labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'],
+            datasets: [
+              {
+                label: 'Air Quality Index (AQI)',
+                data: [68, 72, 75, 80, 88, 92],
+                borderColor: '#0077B6',
+                backgroundColor: 'rgba(0, 119, 182, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#0077B6',
+                pointBorderColor: '#FFFFFF',
+                pointBorderWidth: 2,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                borderWidth: 3,
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                align: 'end',
+                labels: {
+                  color: textColor,
+                  font: { size: 12, weight: '500' },
+                  usePointStyle: true,
+                  pointStyle: 'circle',
+                  padding: 15,
+                }
+              },
+              tooltip: {
+                backgroundColor: '#1A1A1A',
+                titleColor: '#FFFFFF',
+                bodyColor: '#FFFFFF',
+                padding: 12,
+                borderColor: '#0077B6',
+                borderWidth: 1,
+                displayColors: false,
+                callbacks: {
+                  label: function(context) {
+                    return 'AQI: ' + context.parsed.y + ' (Excellent)';
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: false,
+                min: 50,
+                max: 100,
+                grid: { color: gridColor },
+                ticks: {
+                  color: textColor,
+                  font: { size: 11 },
+                  stepSize: 10
+                }
+              },
+              x: {
+                grid: { display: false },
+                ticks: {
+                  color: textColor,
+                  font: { size: 11, weight: '500' }
+                }
+              }
+            }
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

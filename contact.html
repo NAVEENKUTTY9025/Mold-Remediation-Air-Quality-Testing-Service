@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - PureAir Mold Remediation & Air Quality Testing</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg?v=2">
+  <meta name="description" content="Contact PureAir for mold remediation and indoor air quality testing. Same-day inspections available in Salem, Tamil Nadu.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <script>
+        tailwind.config = { 
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            'accent': '#0077B6',
+            'secondary': '#005F8F',
+            'brand-dark': '#1A1A1A',
+            'brand-light': '#FFFFFF',
+            'brand-muted': '#4B5563',
+            'brand-surface': '#F8F9FA'
+          }
+        }
+      }
+    }</script>
+
+  <style>
+    [dir="rtl"] { direction: rtl; }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeInUp 0.8s ease-out; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans antialiased transition-colors duration-300 bg-white dark:bg-brand-dark flex flex-col min-h-screen">
+
+  <nav class="bg-white dark:bg-brand-dark fixed w-full top-0 z-50 border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-[90px]">
+
+        <div class="flex-shrink-0">
+          <a href="index.html" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 bg-brand-dark dark:bg-white rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:shadow-accent/30 shrink-0">
+              <svg class="w-5 h-5 text-accent dark:text-brand-dark group-hover:text-white transition-colors fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 1L2 6v12l10 5 10-5V6L12 1zm0 2.3l7.5 3.75-3.5 1.75-7.5-3.75L12 3.3zM4 7.8l7 3.5v8.4l-7-3.5V7.8zm9 11.9v-8.4l7-3.5v8.4l-7 3.5z"/>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-2xl font-black tracking-tight text-brand-dark dark:text-brand-light uppercase leading-none">Pure<span class="text-accent">Air</span></span>
+              <span class="text-[9px] font-bold tracking-[0.22em] text-accent uppercase mt-1 leading-none">Mold & Air Quality</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="hidden xl:flex items-center justify-center flex-1 mx-8">
+          <div class="flex items-center gap-8">
+
+            <div class="relative group h-[90px] flex items-center">
+              <button class="text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors flex items-center relative py-2">
+                <span>Home</span>
+                <i class="fas fa-chevron-down text-[10px] ms-2 transition-transform duration-300 group-hover:rotate-180"></i>
+                <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              
+              <div class="absolute top-[90px] start-0 w-56 bg-white dark:bg-[#1E293B] border border-t-0 border-gray-200 dark:border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-50">
+                <div class="py-4 px-6 flex flex-col gap-4">
+                  <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">HOME PAGE 01</a>
+                  <a href="home-2.html" class="text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">HOME PAGE 02</a>
+                </div>
+              </div>
+            </div>
+
+            <a href="about.html" class="relative group text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors py-2">
+              About
+              <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            
+            <a href="services.html" class="relative group text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors py-2">
+              Services
+              <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            
+            <a href="blog.html" class="relative group text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors py-2">
+              Blog
+              <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            
+            <a href="contact.html" class="relative group text-xs uppercase tracking-[0.15em] font-medium text-accent transition-colors py-2">
+              Contact
+              <span class="absolute bottom-0 start-0 w-full h-[2px] bg-accent"></span>
+            </a>
+
+            <div class="relative group h-[90px] flex items-center">
+              <button class="text-xs uppercase tracking-[0.15em] font-medium text-gray-900 dark:text-gray-100 hover:text-accent transition-colors flex items-center relative py-2">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-down text-[10px] ms-2 transition-transform duration-300 group-hover:rotate-180"></i>
+                <span class="absolute bottom-0 start-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              
+              <div class="absolute top-[90px] end-0 w-64 bg-white dark:bg-[#1E293B] border border-t-0 border-gray-200 dark:border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-50">
+                <div class="py-4 px-6 flex flex-col gap-5">
+                  <a href="admin-dashboard.html" class="flex items-center text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">
+                     Admin Dashboard
+                  </a>
+                  <a href="client-dashboard.html" class="flex items-center text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">
+                     Client Dashboard
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="hidden xl:flex items-center gap-4">
+          
+          <button id="theme-toggle" class="relative w-[72px] h-[34px] flex items-center bg-gray-200 dark:bg-[#1E293B] rounded-full p-1 transition-colors duration-300 focus:outline-none border border-gray-300 dark:border-gray-700 overflow-hidden" title="Toggle Theme">
+            <span class="text-[9px] font-medium text-gray-500 absolute end-2.5 dark:opacity-0 transition-opacity duration-300 tracking-wider">LIGHT</span>
+            <span class="text-[9px] font-medium text-accent absolute start-2.5 opacity-0 dark:opacity-100 transition-opacity duration-300 tracking-wider">DARK</span>
+            
+            <div class="w-[24px] h-[24px] bg-white dark:bg-brand-dark border border-gray-200 dark:border-gray-600 rounded-full shadow-sm transform transition-transform duration-300 flex items-center justify-center rtl:dark:-translate-x-[38px] ltr:dark:translate-x-[38px] dark:translate-x-[38px] z-10">
+              <i class="fas fa-sun text-[11px] text-accent dark:hidden block"></i>
+              <i class="fas fa-moon text-[11px] text-accent hidden dark:block"></i>
+            </div>
+          </button>
+          
+          <button id="rtl-toggle" class="text-xs font-medium text-gray-400 hover:text-accent transition-colors duration-300 ms-2" title="Toggle RTL">
+            RTL
+          </button>
+
+          <div class="h-8 w-px bg-gray-200 dark:bg-gray-800 mx-2"></div>
+
+          <button type="button" onclick="window.location.href='login.html'" class="bg-accent border-2 border-accent text-white hover:bg-transparent hover:text-accent px-6 py-2.5 text-xs uppercase tracking-wider font-semibold transition-all duration-300 flex items-center gap-2">
+            <span>Login</span>
+            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+          </button>
+          
+          <a href="register.html" class="bg-transparent border-2 border-gray-300 dark:border-gray-700 text-brand-dark dark:text-brand-light hover:border-accent dark:hover:border-accent hover:text-accent dark:hover:text-accent px-6 py-2.5 text-xs uppercase tracking-wider font-medium transition-all duration-300 flex items-center gap-2">
+            <span>Register</span>
+            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+          </a>
+        </div>
+
+        <div class="xl:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-900 dark:text-brand-light hover:text-accent focus:outline-none transition duration-300">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path id="menu-icon" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              <path id="close-icon" class="hidden" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-[#1E293B] border-b border-gray-200 dark:border-gray-800 shadow-2xl">
+      <div class="px-6 pt-4 pb-8 flex flex-col gap-0 max-h-[calc(100vh-90px)] overflow-y-auto">
+
+        <div class="border-b border-gray-100 dark:border-white/5">
+          <button id="mobile-home-dropdown" class="w-full flex items-center justify-between py-4 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300">
+            <span class="text-xs uppercase tracking-widest font-medium">Home</span>
+            <i class="fas fa-plus text-xs transition-transform duration-300" id="mobile-home-icon"></i>
+          </button>
+          <div id="mobile-home-menu" class="hidden pb-4 flex flex-col gap-3 ps-4 border-s-2 border-accent/20 ms-2">
+            <a href="index.html" class="block text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 transition duration-300 uppercase tracking-wider">01. Home Page</a>
+            <a href="home-2.html" class="block text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 transition duration-300 uppercase tracking-wider">02. Home Page</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="block py-4 border-b border-gray-100 dark:border-white/5 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300 text-xs uppercase tracking-widest font-medium">About</a>
+        <a href="services.html" class="block py-4 border-b border-gray-100 dark:border-white/5 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300 text-xs uppercase tracking-widest font-medium">Services</a>
+        <a href="blog.html" class="block py-4 border-b border-gray-100 dark:border-white/5 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300 text-xs uppercase tracking-widest font-medium">Blog</a>
+        <a href="contact.html" class="block py-4 border-b border-gray-100 dark:border-white/5 text-accent transition duration-300 text-xs uppercase tracking-widest font-medium">Contact</a>
+
+        <div class="border-b border-gray-100 dark:border-white/5">
+          <button id="mobile-dashboard-dropdown" class="w-full flex items-center justify-between py-4 text-gray-900 dark:text-brand-light hover:text-accent transition duration-300">
+            <span class="text-xs uppercase tracking-widest font-medium">Dashboard</span>
+            <i class="fas fa-plus text-xs transition-transform duration-300" id="mobile-dashboard-icon"></i>
+          </button>
+          <div id="mobile-dashboard-menu" class="hidden pb-4 flex flex-col gap-4 ps-4 border-s-2 border-accent/20 ms-2 mt-2">
+            <a href="admin-dashboard.html" class="flex items-center text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 transition duration-300 uppercase tracking-wider">
+               Admin Dashboard
+            </a>
+            <a href="client-dashboard.html" class="flex items-center text-sm font-medium text-gray-500 hover:text-accent dark:text-gray-400 transition duration-300 uppercase tracking-wider">
+               Client Dashboard
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col gap-4">
+          <button type="button" onclick="window.location.href='login.html'" class="flex items-center justify-center w-full bg-accent border-2 border-accent text-white hover:bg-transparent hover:text-accent px-4 py-3.5 font-semibold uppercase tracking-widest text-center transition duration-300 text-xs gap-2">
+            <span>Login</span>
+            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+          </button>
+          
+          <a href="register.html" class="flex items-center justify-center w-full bg-transparent border-2 border-gray-300 dark:border-gray-700 text-brand-dark dark:text-brand-light hover:border-accent dark:hover:border-accent hover:text-accent dark:hover:text-accent px-4 py-3.5 font-medium uppercase tracking-widest text-center transition duration-300 text-xs gap-2">
+            <span>Register</span>
+            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+          </a>
+          
+          <div class="flex justify-between items-center pt-6 pb-2 border-t border-gray-100 dark:border-white/5 mt-4">
+            <button id="mobile-theme-toggle" class="bg-gray-100 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-full px-4 py-2 transition-colors flex items-center text-xs font-medium uppercase tracking-widest">
+              <span class="dark:hidden flex items-center text-accent"><i class="fas fa-sun me-2"></i> Light Active</span>
+              <span class="hidden dark:flex items-center text-accent"><i class="fas fa-moon me-2"></i> Dark Active</span>
+            </button>
+            <button id="mobile-rtl-toggle" class="text-gray-400 hover:text-accent transition-colors flex items-center text-xs font-medium uppercase tracking-widest">
+              <i class="fas fa-language me-2 text-lg"></i> RTL
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow flex flex-col pt-[90px]">
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: HERO — Split layout with contact highlights       -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden bg-brand-dark">
+      <div class="absolute inset-0 opacity-20">
+        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Background" class="w-full h-full object-cover">
+      </div>
+      <div class="absolute top-20 start-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 end-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 lg:py-32">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+          <!-- Left Content -->
+          <div class="text-white">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 border border-accent/40 rounded-full bg-white/5 backdrop-blur">
+              <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <span class="text-[10px] font-bold uppercase tracking-[0.25em]">Get in touch</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.1] mb-6">
+              Let's talk about <span class="text-accent">your air.</span>
+            </h1>
+            <p class="text-lg text-gray-300 leading-relaxed mb-10 max-w-lg">
+              Whether you've spotted visible mold, noticed a musty odor, or just want peace of mind — our certified team is ready to help. Same-day inspections available.
+            </p>
+
+            <nav class="flex items-center gap-3 text-xs uppercase tracking-widest font-medium mb-10">
+              <a href="index.html" class="text-gray-400 hover:text-accent transition-colors">Home</a>
+              <i class="fas fa-chevron-right text-[8px] text-gray-500 rtl:rotate-180"></i>
+              <span class="text-accent">Contact</span>
+            </nav>
+          </div>
+
+          <!-- Right Quick Contact Cards -->
+          <div class="grid sm:grid-cols-2 gap-4">
+            <a href="tel:+919876543210" class="group bg-white/5 backdrop-blur border border-white/10 p-6 hover:border-accent hover:bg-white/10 transition-all">
+              <div class="w-12 h-12 bg-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <i class="fas fa-phone text-white"></i>
+              </div>
+              <p class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2">Call us now</p>
+              <p class="text-white font-bold mb-1">+91 98765 43210</p>
+              <p class="text-xs text-gray-400">Mon–Sat · 7am – 8pm</p>
+            </a>
+
+            <a href="mailto:info@pureair.com" class="group bg-white/5 backdrop-blur border border-white/10 p-6 hover:border-accent hover:bg-white/10 transition-all">
+              <div class="w-12 h-12 bg-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <i class="fas fa-envelope text-white"></i>
+              </div>
+              <p class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2">Email us</p>
+              <p class="text-white font-bold mb-1">info@pureair.com</p>
+              <p class="text-xs text-gray-400">2-hour reply guarantee</p>
+            </a>
+
+            <div class="group bg-white/5 backdrop-blur border border-white/10 p-6 sm:col-span-2">
+              <div class="flex items-start gap-5">
+                <div class="w-12 h-12 bg-accent flex items-center justify-center shrink-0">
+                  <i class="fas fa-map-marker-alt text-white"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2">Service area</p>
+                  <p class="text-white font-bold mb-1">Salem, Tamil Nadu & surrounding areas</p>
+                  <p class="text-xs text-gray-400">On-site inspections within a 50 km radius</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: MAIN CONTACT FORM — Split with FAQ sidebar        -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-white dark:bg-brand-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+          <!-- Left: Form -->
+          <div class="lg:col-span-7">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-3">Send a message</span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-dark dark:text-white mb-4">
+              Tell us how we can help.
+            </h2>
+            <p class="text-brand-muted dark:text-gray-400 mb-10 leading-relaxed">
+              Fill out the form below and a certified specialist will get back to you within 2 business hours. For urgent situations, please call us directly.
+            </p>
+
+            <form class="space-y-6">
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-2">Full Name *</label>
+                  <input type="text" placeholder="John Doe" class="w-full px-4 py-3.5 bg-brand-surface dark:bg-[#1E293B] border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white placeholder-gray-400 focus:outline-none focus:border-accent transition-colors">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-2">Phone *</label>
+                  <input type="tel" placeholder="+91 98765 43210" class="w-full px-4 py-3.5 bg-brand-surface dark:bg-[#1E293B] border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white placeholder-gray-400 focus:outline-none focus:border-accent transition-colors">
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-2">Email Address *</label>
+                  <input type="email" placeholder="john@example.com" class="w-full px-4 py-3.5 bg-brand-surface dark:bg-[#1E293B] border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white placeholder-gray-400 focus:outline-none focus:border-accent transition-colors">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-2">Property Type</label>
+                  <select class="w-full px-4 py-3.5 bg-brand-surface dark:bg-[#1E293B] border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white focus:outline-none focus:border-accent transition-colors">
+                    <option>Residential Home</option>
+                    <option>Apartment / Condo</option>
+                    <option>Commercial Building</option>
+                    <option>Industrial Facility</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-2">Service Needed *</label>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <label class="flex items-center gap-3 p-4 border border-gray-200 dark:border-white/10 cursor-pointer hover:border-accent transition-colors bg-brand-surface dark:bg-[#1E293B]">
+                    <input type="checkbox" class="w-4 h-4 accent-accent">
+                    <span class="text-sm font-medium text-brand-dark dark:text-white">Mold Inspection</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-4 border border-gray-200 dark:border-white/10 cursor-pointer hover:border-accent transition-colors bg-brand-surface dark:bg-[#1E293B]">
+                    <input type="checkbox" class="w-4 h-4 accent-accent">
+                    <span class="text-sm font-medium text-brand-dark dark:text-white">Mold Remediation</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-4 border border-gray-200 dark:border-white/10 cursor-pointer hover:border-accent transition-colors bg-brand-surface dark:bg-[#1E293B]">
+                    <input type="checkbox" class="w-4 h-4 accent-accent">
+                    <span class="text-sm font-medium text-brand-dark dark:text-white">Air Quality Testing</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-4 border border-gray-200 dark:border-white/10 cursor-pointer hover:border-accent transition-colors bg-brand-surface dark:bg-[#1E293B]">
+                    <input type="checkbox" class="w-4 h-4 accent-accent">
+                    <span class="text-sm font-medium text-brand-dark dark:text-white">Moisture Control</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-muted dark:text-gray-400 mb-2">Tell us about your situation</label>
+                <textarea rows="5" placeholder="Describe what you're experiencing — visible mold, musty smell, recent water damage, etc." class="w-full px-4 py-3.5 bg-brand-surface dark:bg-[#1E293B] border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white placeholder-gray-400 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <input type="checkbox" class="w-4 h-4 accent-accent mt-1">
+                <p class="text-xs text-brand-muted dark:text-gray-400 leading-relaxed">
+                  I agree to the <a href="#" class="text-accent hover:underline">Privacy Policy</a> and consent to being contacted about my inquiry.
+                </p>
+              </div>
+
+              <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-accent text-white font-bold uppercase tracking-widest text-xs hover:bg-secondary transition-colors">
+                Send Message <i class="fas fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: FAQ sidebar -->
+          <div class="lg:col-span-5">
+            <div class="lg:sticky lg:top-32">
+              <span class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-3">Quick answers</span>
+              <h3 class="text-2xl font-serif font-bold text-brand-dark dark:text-white mb-8">Frequently asked questions</h3>
+
+              <div class="space-y-4">
+                <details class="group bg-brand-surface dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 p-5 open:border-accent transition-colors">
+                  <summary class="flex items-center justify-between cursor-pointer list-none">
+                    <span class="font-bold text-brand-dark dark:text-white text-sm pe-4">How fast can you inspect my property?</span>
+                    <i class="fas fa-plus text-accent transition-transform group-open:rotate-45"></i>
+                  </summary>
+                  <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mt-4">
+                    Same-day inspections are usually available when booked before 3pm. Emergency response within 4 hours for water damage situations.
+                  </p>
+                </details>
+
+                <details class="group bg-brand-surface dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 p-5 open:border-accent transition-colors">
+                  <summary class="flex items-center justify-between cursor-pointer list-none">
+                    <span class="font-bold text-brand-dark dark:text-white text-sm pe-4">Do you work with insurance claims?</span>
+                    <i class="fas fa-plus text-accent transition-transform group-open:rotate-45"></i>
+                  </summary>
+                  <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mt-4">
+                    Yes. We provide detailed documentation, photos, and lab reports that insurers accept. We can also bill your insurer directly.
+                  </p>
+                </details>
+
+                <details class="group bg-brand-surface dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 p-5 open:border-accent transition-colors">
+                  <summary class="flex items-center justify-between cursor-pointer list-none">
+                    <span class="font-bold text-brand-dark dark:text-white text-sm pe-4">Is the inspection really free?</span>
+                    <i class="fas fa-plus text-accent transition-transform group-open:rotate-45"></i>
+                  </summary>
+                  <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mt-4">
+                    Yes — the initial visual inspection and written estimate are always free. Lab sample analysis (if needed) has a small fee.
+                  </p>
+                </details>
+
+                <details class="group bg-brand-surface dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 p-5 open:border-accent transition-colors">
+                  <summary class="flex items-center justify-between cursor-pointer list-none">
+                    <span class="font-bold text-brand-dark dark:text-white text-sm pe-4">How long does remediation take?</span>
+                    <i class="fas fa-plus text-accent transition-transform group-open:rotate-45"></i>
+                  </summary>
+                  <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mt-4">
+                    Most residential projects take 2–5 days from containment to clearance. Larger commercial jobs may take 1–2 weeks.
+                  </p>
+                </details>
+
+                <details class="group bg-brand-surface dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 p-5 open:border-accent transition-colors">
+                  <summary class="flex items-center justify-between cursor-pointer list-none">
+                    <span class="font-bold text-brand-dark dark:text-white text-sm pe-4">Will you test the air after remediation?</span>
+                    <i class="fas fa-plus text-accent transition-transform group-open:rotate-45"></i>
+                  </summary>
+                  <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mt-4">
+                    Absolutely. Post-remediation verification testing is included in every remediation project — you get a clearance report.
+                  </p>
+                </details>
+              </div>
+
+              <!-- Help Card -->
+              <div class="mt-8 p-6 bg-accent text-white">
+                <i class="fas fa-headset text-2xl mb-4 opacity-80"></i>
+                <p class="font-bold mb-2">Need urgent help?</p>
+                <p class="text-sm text-white/90 mb-4">Our emergency line is open 24/7 for active water damage and visible mold outbreaks.</p>
+                <a href="tel:+919876543210" class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest border-b-2 border-white/40 pb-1 hover:border-white transition-colors">
+                  Call +91 98765 43210 <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: OFFICE LOCATIONS — 3 column cards                 -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-brand-surface dark:bg-[#0F172A]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-3">Our locations</span>
+          <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-dark dark:text-white leading-tight">
+            Visit or call our <span class="text-accent">offices</span>
+          </h2>
+          <p class="text-brand-muted dark:text-gray-400 mt-5 leading-relaxed">
+            Three convenient locations across Salem and nearby districts, plus mobile teams ready to respond anywhere.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+          <!-- Location 1 -->
+          <div class="bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 overflow-hidden group hover:border-accent transition-colors">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salem HQ" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-accent text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Main HQ</div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3">Salem Headquarters</h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6">
+                42 Fairlands Avenue,<br>
+                Salem, Tamil Nadu 636016
+              </p>
+              <ul class="space-y-3 text-sm">
+                <li class="flex items-center gap-3 text-brand-muted dark:text-gray-400">
+                  <i class="fas fa-phone text-accent w-4"></i>
+                  <a href="tel:+919876543210" class="hover:text-accent transition-colors">+91 98765 43210</a>
+                </li>
+                <li class="flex items-center gap-3 text-brand-muted dark:text-gray-400">
+                  <i class="fas fa-clock text-accent w-4"></i>
+                  <span>Mon–Sat: 7am – 8pm</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Location 2 -->
+          <div class="bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 overflow-hidden group hover:border-accent transition-colors">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coimbatore office" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-white/90 dark:bg-brand-dark/90 backdrop-blur px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-dark dark:text-white">Regional</div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3">Coimbatore Office</h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6">
+                17 Avinashi Road,<br>
+                Coimbatore, Tamil Nadu 641018
+              </p>
+              <ul class="space-y-3 text-sm">
+                <li class="flex items-center gap-3 text-brand-muted dark:text-gray-400">
+                  <i class="fas fa-phone text-accent w-4"></i>
+                  <a href="tel:+919876543211" class="hover:text-accent transition-colors">+91 98765 43211</a>
+                </li>
+                <li class="flex items-center gap-3 text-brand-muted dark:text-gray-400">
+                  <i class="fas fa-clock text-accent w-4"></i>
+                  <span>Mon–Sat: 8am – 6pm</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Location 3 -->
+          <div class="bg-white dark:bg-[#1E293B] border border-gray-100 dark:border-white/5 overflow-hidden group hover:border-accent transition-colors">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile unit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute top-4 start-4 bg-accent text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Mobile</div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-xl font-serif font-bold text-brand-dark dark:text-white mb-3">Mobile Response Unit</h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 leading-relaxed mb-6">
+                Serving Erode, Namakkal,<br>
+                Dharmapuri & surrounding districts
+              </p>
+              <ul class="space-y-3 text-sm">
+                <li class="flex items-center gap-3 text-brand-muted dark:text-gray-400">
+                  <i class="fas fa-phone text-accent w-4"></i>
+                  <a href="tel:+919876543212" class="hover:text-accent transition-colors">+91 98765 43212</a>
+                </li>
+                <li class="flex items-center gap-3 text-brand-muted dark:text-gray-400">
+                  <i class="fas fa-clock text-accent w-4"></i>
+                  <span>Emergency 24/7</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: EMERGENCY BANNER — Full-width red-accent strip    -->
+    <!-- ============================================================ -->
+    <section class="bg-brand-dark py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 p-8 lg:p-12 border-2 border-accent relative">
+          <!-- Pulsing indicator -->
+          <div class="absolute -top-3 -start-3 flex items-center gap-2 bg-accent text-white px-4 py-1.5">
+            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            <span class="text-[10px] font-bold uppercase tracking-widest">Urgent</span>
+          </div>
+
+          <div class="flex items-start gap-5 flex-1">
+            <div class="w-16 h-16 bg-accent flex items-center justify-center shrink-0">
+              <i class="fas fa-exclamation-triangle text-white text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl md:text-3xl font-serif font-bold text-white mb-2">Active water damage or visible mold?</h3>
+              <p class="text-gray-400 leading-relaxed">Every hour counts. Call our 24/7 emergency line for immediate assistance — we dispatch a certified team within 4 hours.</p>
+            </div>
+          </div>
+
+          <a href="tel:+919876543210" class="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-brand-dark transition-colors shrink-0">
+            <i class="fas fa-phone"></i> Call Emergency Line
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: MAP & HOURS — Two column split                    -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-white dark:bg-brand-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-0 overflow-hidden shadow-2xl border border-gray-100 dark:border-white/10">
+
+          <!-- Map placeholder -->
+          <div class="relative min-h-[400px] bg-brand-surface dark:bg-[#1E293B] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 opacity-30">
+              <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Map" class="w-full h-full object-cover">
+            </div>
+            <div class="relative z-10 text-center p-8">
+              <div class="w-20 h-20 mx-auto bg-accent flex items-center justify-center mb-5 shadow-2xl">
+                <i class="fas fa-map-marked-alt text-white text-3xl"></i>
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-brand-dark dark:text-white mb-2">Serving Salem & Beyond</h3>
+              <p class="text-sm text-brand-muted dark:text-gray-400 mb-6 max-w-xs mx-auto">On-site inspections across the entire Salem metropolitan area and 50 km radius.</p>
+              <a href="#" class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-accent hover:text-secondary transition-colors">
+                Open in Google Maps <i class="fas fa-external-link-alt text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hours & info -->
+          <div class="bg-brand-dark p-10 lg:p-14">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-3">Business hours</span>
+            <h3 class="text-3xl font-serif font-bold text-white mb-8">When we're available</h3>
+
+            <div class="space-y-4 mb-10">
+              <div class="flex items-center justify-between py-4 border-b border-white/10">
+                <span class="text-sm font-medium text-gray-300">Monday – Friday</span>
+                <span class="text-sm font-bold text-white">7:00 AM – 8:00 PM</span>
+              </div>
+              <div class="flex items-center justify-between py-4 border-b border-white/10">
+                <span class="text-sm font-medium text-gray-300">Saturday</span>
+                <span class="text-sm font-bold text-white">8:00 AM – 6:00 PM</span>
+              </div>
+              <div class="flex items-center justify-between py-4 border-b border-white/10">
+                <span class="text-sm font-medium text-gray-300">Sunday</span>
+                <span class="text-sm font-bold text-accent">Emergency only</span>
+              </div>
+              <div class="flex items-center justify-between py-4">
+                <span class="text-sm font-medium text-gray-300">Emergency Line</span>
+                <span class="inline-flex items-center gap-2 text-sm font-bold text-accent">
+                  <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span> 24/7
+                </span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-5 bg-white/5 border border-white/10">
+                <i class="fas fa-bolt text-accent text-xl mb-3"></i>
+                <p class="text-2xl font-serif font-bold text-white mb-1">2 Hr</p>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Response time</p>
+              </div>
+              <div class="p-5 bg-white/5 border border-white/10">
+                <i class="fas fa-truck-fast text-accent text-xl mb-3"></i>
+                <p class="text-2xl font-serif font-bold text-white mb-1">4 Hr</p>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Emergency dispatch</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: NEWSLETTER / FINAL CTA — Bordered box             -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-brand-surface dark:bg-[#0F172A]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative border-2 border-accent p-10 md:p-16 lg:p-20">
+          <!-- Corner Accents -->
+          <div class="absolute -top-1 -start-1 w-8 h-8 border-t-4 border-s-4 border-accent"></div>
+          <div class="absolute -top-1 -end-1 w-8 h-8 border-t-4 border-e-4 border-accent"></div>
+          <div class="absolute -bottom-1 -start-1 w-8 h-8 border-b-4 border-s-4 border-accent"></div>
+          <div class="absolute -bottom-1 -end-1 w-8 h-8 border-b-4 border-e-4 border-accent"></div>
+
+          <div class="text-center max-w-2xl mx-auto">
+            <div class="w-16 h-16 mx-auto bg-accent flex items-center justify-center mb-6">
+              <i class="fas fa-envelope-open-text text-white text-2xl"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-brand-dark dark:text-white leading-tight mb-5">
+              Stay ahead of <span class="text-accent">mold season.</span>
+            </h2>
+            <p class="text-brand-muted dark:text-gray-400 leading-relaxed mb-8">
+              Get monthly prevention tips, seasonal air quality alerts, and exclusive service offers delivered straight to your inbox. No spam — we promise.
+            </p>
+
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                class="flex-grow px-5 py-4 bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-white/10 text-brand-dark dark:text-white placeholder-gray-400 focus:outline-none focus:border-accent transition-colors"
+                required
+              >
+              <button 
+                type="submit" 
+                class="px-8 py-4 bg-accent text-white font-bold uppercase tracking-widest text-xs hover:bg-secondary transition-colors whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+
+            <p class="text-xs text-brand-muted dark:text-gray-400 mt-5">
+              Join 5,000+ homeowners already receiving our tips. <a href="#" class="text-accent hover:underline">Privacy Policy</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-brand-dark text-white pt-24 pb-12 mt-auto border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        
+        <div>
+          <a href="index.html" class="flex items-center gap-3 mb-6 group w-fit">
+            <div class="w-10 h-10 bg-white dark:bg-brand-dark rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-accent shrink-0">
+              <svg class="w-5 h-5 text-brand-dark dark:text-accent group-hover:text-white transition-colors fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 1L2 6v12l10 5 10-5V6L12 1zm0 2.3l7.5 3.75-3.5 1.75-7.5-3.75L12 3.3zM4 7.8l7 3.5v8.4l-7-3.5V7.8zm9 11.9v-8.4l7-3.5v8.4l-7 3.5z"/>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-2xl font-black tracking-tight uppercase text-white leading-none">Pure<span class="text-accent">Air</span></span>
+              <span class="text-[9px] font-bold tracking-[0.22em] text-accent uppercase mt-1 leading-none">Mold & Air Quality</span>
+            </div>
+          </a>
+          <p class="text-gray-400 mb-8 font-medium leading-relaxed text-base">
+            Professional mold remediation and indoor air quality testing for healthier homes and businesses.
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="w-12 h-12 border border-white/20 text-white hover:border-accent hover:text-accent flex items-center justify-center transition-all duration-300 rounded-sm">
+              <i class="fab fa-facebook-f text-base"></i>
+            </a>
+            <a href="#" class="w-12 h-12 border border-white/20 text-white hover:border-accent hover:text-accent flex items-center justify-center transition-all duration-300 rounded-sm">
+              <i class="fab fa-instagram text-base"></i>
+            </a>
+            <a href="#" class="w-12 h-12 border border-white/20 text-white hover:border-accent hover:text-accent flex items-center justify-center transition-all duration-300 rounded-sm">
+              <i class="fab fa-x-twitter text-base"></i>
+            </a>
+            <a href="#" class="w-12 h-12 border border-white/20 text-white hover:border-accent hover:text-accent flex items-center justify-center transition-all duration-300 rounded-sm">
+              <i class="fab fa-youtube text-base"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm uppercase tracking-[0.2em] font-medium mb-8 text-white">Quick Links</h4>
+          <ul class="flex flex-col gap-5">
+            <li><a href="index.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Home</a></li>
+            <li><a href="about.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">About Us</a></li>
+            <li><a href="blog.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Air Quality Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm uppercase tracking-[0.2em] font-medium mb-8 text-white">Our Services</h4>
+          <ul class="flex flex-col gap-5">
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Mold Inspection</a></li>
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Mold Remediation</a></li>
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Air Quality Testing</a></li>
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Moisture Control</a></li>
+            <li><a href="services.html" class="text-base text-gray-400 hover:text-accent transition-colors duration-300 font-medium">Prevention Plans</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm uppercase tracking-[0.2em] font-medium mb-8 text-white">Contact Us</h4>
+          <ul class="flex flex-col gap-6">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-accent mt-1 me-4 text-base"></i>
+              <span class="text-base text-gray-400 font-medium">Serving Salem, Tamil Nadu, India & Surrounding Areas</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone text-accent me-4 text-base"></i>
+              <a href="tel:+919876543210" class="text-base text-gray-400 hover:text-accent transition-colors font-medium">+91 98765 43210</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-accent me-4 text-base"></i>
+              <a href="mailto:info@pureair.com" class="text-base text-gray-400 hover:text-accent transition-colors font-medium">info@pureair.com</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm tracking-wider uppercase mb-4 md:mb-0 font-medium">
+          © 2026 PureAir Mold Remediation & Air Quality Testing. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a href="login.html" class="text-gray-400 hover:text-accent text-sm tracking-wider uppercase font-medium transition-colors duration-300">Client Login</a>
+          <a href="#" class="text-gray-400 hover:text-accent text-sm tracking-wider uppercase font-medium transition-colors duration-300">Privacy</a>
+          <a href="#" class="text-gray-400 hover:text-accent text-sm tracking-wider uppercase font-medium transition-colors duration-300">Terms</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const html = document.documentElement;
+
+    function toggleTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+    if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
+
+    // RTL Toggle
+    const rtlToggle = document.getElementById('rtl-toggle');
+    const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+
+    function toggleRTL() {
+      if (html.getAttribute('dir') === 'rtl') {
+        html.removeAttribute('dir');
+        localStorage.setItem('direction', 'ltr');
+      } else {
+        html.setAttribute('dir', 'rtl');
+        localStorage.setItem('direction', 'rtl');
+      }
+    }
+
+    if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+    if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+    if (localStorage.getItem('direction') === 'rtl') html.setAttribute('dir', 'rtl');
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+      if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('flex');
+      } else {
+          mobileMenu.classList.remove('flex');
+      }
+    });
+
+    // Mobile Dropdowns Toggle Function
+    function setupMobileDropdown(dropdownId, menuId, iconId) {
+      const dropdown = document.getElementById(dropdownId);   
+      const menu = document.getElementById(menuId);
+      const icon = document.getElementById(iconId);
+      
+      if(dropdown && menu && icon) {
+        dropdown.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+          if(menu.classList.contains('hidden')) {
+            icon.classList.remove('fa-minus');
+            icon.classList.add('fa-plus');
+            menu.classList.remove('flex');
+          } else {
+            icon.classList.remove('fa-plus');
+            icon.classList.add('fa-minus');
+            menu.classList.add('flex');
+          }
+        });
+      }
+    }
+
+    setupMobileDropdown('mobile-home-dropdown', 'mobile-home-menu', 'mobile-home-icon');
+    setupMobileDropdown('mobile-dashboard-dropdown', 'mobile-dashboard-menu', 'mobile-dashboard-icon');
+
+  </script>
+</body>
+</html>
