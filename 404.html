@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Mold Remediation & Air Quality Testing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* Ensures absolutely no scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            color: #2d3748;
+        }
+
+        /* Animated background elements */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            filter: blur(2px);
+            z-index: -1;
+            animation: float 8s infinite ease-in-out alternate;
+        }
+        
+        .shape.one {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            left: -100px;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.15), rgba(0, 242, 254, 0.15));
+        }
+        
+        .shape.two {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            right: -50px;
+            background: linear-gradient(135deg, rgba(161, 196, 253, 0.2), rgba(194, 233, 251, 0.2));
+            animation-delay: 2s;
+        }
+
+        .shape.three {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            right: 15%;
+            background: rgba(255, 255, 255, 0.3);
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-40px) scale(1.05); }
+        }
+
+        /* Main Content Container using Glassmorphism */
+        .container {
+            text-align: center;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            width: 90%;
+            z-index: 10;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 7rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            letter-spacing: -3px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #2b6cb0;
+        }
+
+        p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #4a5568;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #3182ce 0%, #4299e1 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(49, 130, 206, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(49, 130, 206, 0.4);
+            background: linear-gradient(135deg, #2b6cb0 0%, #3182ce 100%);
+        }
+
+        /* Icon inside button */
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover svg {
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 5rem; }
+            h2 { font-size: 1.5rem; }
+            .container { padding: 40px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background decorative shapes -->
+    <div class="shape one"></div>
+    <div class="shape two"></div>
+    <div class="shape three"></div>
+
+    <div class="container">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>The air here seems a little empty. The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <a href="/" class="btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Homepage
+        </a>
+    </div>
+
+</body>
+</html>
