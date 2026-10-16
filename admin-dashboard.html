@@ -52,6 +52,8 @@
       border-radius: 1.5rem;
       transition: all 0.3s ease;
       box-shadow: 0 8px 20px -8px rgba(0,119,182,0.08);
+      min-width: 0;
+      max-width: 100%;
     }
     .dark .dashboard-card {
       background-color: #1A1A1A;
@@ -60,6 +62,10 @@
     .dashboard-card:hover {
       border-color: #0077B6;
       box-shadow: 0 12px 28px -12px rgba(0,119,182,0.2);
+    }
+
+    canvas {
+      max-width: 100% !important;
     }
 
     /* Sidebar */
@@ -198,8 +204,8 @@
         </button>
 
         <a href="index.html" class="flex items-center gap-2 sm:gap-3 group">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-brand-dark dark:bg-white rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:shadow-accent/30 shrink-0">
-            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-accent dark:text-brand-dark group-hover:text-white transition-colors fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-brand-dark rounded-xl flex items-center justify-center shadow-md border border-gray-800 dark:border-white/15 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:shadow-accent/30 shrink-0">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-accent group-hover:text-white transition-colors fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 1L2 6v12l10 5 10-5V6L12 1zm0 2.3l7.5 3.75-3.5 1.75-7.5-3.75L12 3.3zM4 7.8l7 3.5v8.4l-7-3.5V7.8zm9 11.9v-8.4l7-3.5v8.4l-7 3.5z"/>
             </svg>
           </div>
@@ -218,19 +224,20 @@
         </div>
 
         <!-- Dark Mode Toggle -->
-        <button id="theme-toggle" class="relative w-[64px] sm:w-[72px] h-[32px] sm:h-[34px] flex items-center bg-gray-200 dark:bg-[#1E293B] rounded-full p-1 transition-colors duration-300 focus:outline-none border border-gray-300 dark:border-gray-700 overflow-hidden" title="Toggle Theme">
-          <span class="text-[8px] sm:text-[9px] font-medium text-gray-500 absolute end-2 sm:end-2.5 dark:opacity-0 transition-opacity duration-300 tracking-wider">LIGHT</span>
-          <span class="text-[8px] sm:text-[9px] font-medium text-accent absolute start-2 sm:start-2.5 opacity-0 dark:opacity-100 transition-opacity duration-300 tracking-wider">DARK</span>
+        <button id="theme-toggle" class="relative w-[70px] sm:w-[76px] h-9 sm:h-10 flex items-center bg-gray-200 dark:bg-[#1E293B] rounded-full p-1 transition-colors duration-300 focus:outline-none border border-gray-300 dark:border-gray-700 overflow-hidden shrink-0" title="Toggle Theme">
+          <span class="text-[8px] sm:text-[9px] font-bold text-gray-500 absolute end-2 sm:end-2.5 dark:opacity-0 transition-opacity duration-300 tracking-wider">LIGHT</span>
+          <span class="text-[8px] sm:text-[9px] font-bold text-accent absolute start-2 sm:start-2.5 opacity-0 dark:opacity-100 transition-opacity duration-300 tracking-wider">DARK</span>
           
-          <div class="w-[22px] h-[22px] sm:w-[24px] sm:h-[24px] bg-white dark:bg-brand-dark border border-gray-200 dark:border-gray-600 rounded-full shadow-sm transform transition-transform duration-300 flex items-center justify-center dark:translate-x-[32px] sm:dark:translate-x-[38px] rtl:dark:-translate-x-[32px] rtl:sm:dark:-translate-x-[38px] z-10">
-            <i class="fas fa-sun text-[10px] sm:text-[11px] text-accent dark:hidden block"></i>
-            <i class="fas fa-moon text-[10px] sm:text-[11px] text-accent hidden dark:block"></i>
+          <div class="w-7 h-7 sm:w-8 sm:h-8 bg-white dark:bg-brand-dark border border-gray-200 dark:border-gray-600 rounded-full shadow-sm transform transition-transform duration-300 flex items-center justify-center dark:translate-x-[34px] sm:dark:translate-x-[36px] rtl:dark:-translate-x-[34px] rtl:sm:dark:-translate-x-[36px] z-10">
+            <i class="fas fa-sun text-[10px] sm:text-xs text-accent dark:hidden block"></i>
+            <i class="fas fa-moon text-[10px] sm:text-xs text-accent hidden dark:block"></i>
           </div>
         </button>
 
         <!-- RTL Toggle -->
-        <button id="rtl-toggle" class="text-xs font-medium text-gray-400 hover:text-accent transition-colors duration-300 ms-1 sm:ms-2" title="Toggle RTL">
-          RTL
+        <button id="rtl-toggle" class="h-9 sm:h-10 px-3 sm:px-3.5 rounded-full border border-gray-300 dark:border-gray-700 bg-transparent text-xs font-semibold text-gray-700 dark:text-gray-200 hover:border-accent hover:text-accent transition-all duration-300 flex items-center justify-center gap-1.5 uppercase tracking-wider" title="Toggle RTL">
+          <i class="fas fa-globe text-[11px] text-accent"></i>
+          <span>RTL</span>
         </button>
 
         <div class="hidden sm:block h-8 w-px bg-gray-200 dark:bg-gray-800 mx-2"></div>
@@ -343,54 +350,54 @@
         </div>
 
         <!-- KPI Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-          <div class="dashboard-card p-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
+          <div class="dashboard-card p-4 sm:p-6 min-w-0">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-brand-muted dark:text-gray-400 text-sm">Total Revenue</p>
-                <p class="text-3xl font-black mt-1 text-brand-dark dark:text-white">$48,290</p>
+                <p class="text-2xl sm:text-3xl font-black mt-1 text-brand-dark dark:text-white">$48,290</p>
                 <p class="text-xs text-emerald-600 mt-2">↑ 12.5% from last month</p>
               </div>
-              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent shrink-0">
                 <i class="fa-solid fa-dollar-sign text-2xl"></i>
               </div>
             </div>
           </div>
 
-          <div class="dashboard-card p-6">
+          <div class="dashboard-card p-4 sm:p-6 min-w-0">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-brand-muted dark:text-gray-400 text-sm">Active Jobs</p>
-                <p class="text-3xl font-black mt-1 text-brand-dark dark:text-white">7</p>
+                <p class="text-2xl sm:text-3xl font-black mt-1 text-brand-dark dark:text-white">7</p>
                 <p class="text-xs text-amber-600 mt-2">3 pending inspection</p>
               </div>
-              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent shrink-0">
                 <i class="fa-solid fa-shield-virus text-2xl"></i>
               </div>
             </div>
           </div>
 
-          <div class="dashboard-card p-6">
+          <div class="dashboard-card p-4 sm:p-6 min-w-0">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-brand-muted dark:text-gray-400 text-sm">Total Clients</p>
-                <p class="text-3xl font-black mt-1 text-brand-dark dark:text-white">312</p>
+                <p class="text-2xl sm:text-3xl font-black mt-1 text-brand-dark dark:text-white">312</p>
                 <p class="text-xs text-emerald-600 mt-2">+18 this month</p>
               </div>
-              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent shrink-0">
                 <i class="fa-solid fa-users text-2xl"></i>
               </div>
             </div>
           </div>
 
-          <div class="dashboard-card p-6">
+          <div class="dashboard-card p-4 sm:p-6 min-w-0">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-brand-muted dark:text-gray-400 text-sm">Clearance Rate</p>
-                <p class="text-3xl font-black mt-1 text-brand-dark dark:text-white">99.8%</p>
+                <p class="text-2xl sm:text-3xl font-black mt-1 text-brand-dark dark:text-white">99.8%</p>
                 <p class="text-xs text-emerald-600 mt-2">Industry leading</p>
               </div>
-              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+              <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent shrink-0">
                 <i class="fa-solid fa-circle-check text-2xl"></i>
               </div>
             </div>
@@ -398,7 +405,7 @@
         </div>
 
         <!-- Revenue Chart -->
-        <div class="dashboard-card p-6 mt-6 reveal">
+        <div class="dashboard-card p-4 sm:p-6 mt-6 reveal min-w-0 max-w-full overflow-hidden">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h3 class="font-bold text-lg text-brand-dark dark:text-white">Revenue & Job Volume</h3>
@@ -409,14 +416,14 @@
               <button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-brand-surface dark:bg-[#1E293B] text-brand-muted dark:text-gray-400 hover:bg-accent hover:text-white transition-colors">1Y</button>
             </div>
           </div>
-          <div class="bg-brand-surface dark:bg-[#1E293B] rounded-2xl p-4 border border-gray-100 dark:border-white/5" style="height: 320px; position: relative;">
-            <canvas id="revenueChart"></canvas>
+          <div class="w-full min-w-0 max-w-full overflow-hidden bg-brand-surface dark:bg-[#1E293B] rounded-2xl p-3 sm:p-4 border border-gray-100 dark:border-white/5 relative" style="height: 320px;">
+            <canvas id="revenueChart" class="w-full max-w-full"></canvas>
           </div>
         </div>
 
         <!-- Quick Actions -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 reveal">
-          <a href="#jobs" onclick="activateSection('jobs'); return false;" class="dashboard-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-6 reveal">
+          <a href="#jobs" onclick="activateSection('jobs'); return false;" class="dashboard-card p-4 sm:p-6 flex flex-col items-center justify-center text-center group cursor-pointer min-w-0">
             <div class="w-16 h-16 bg-brand-surface dark:bg-[#1E293B] rounded-full flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
               <i class="fa-solid fa-plus text-2xl text-accent group-hover:text-white transition-colors"></i>
             </div>
@@ -424,7 +431,7 @@
             <p class="text-xs text-brand-muted dark:text-gray-400">Schedule a new service</p>
           </a>
 
-          <a href="#crew" onclick="activateSection('crew'); return false;" class="dashboard-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer">
+          <a href="#crew" onclick="activateSection('crew'); return false;" class="dashboard-card p-4 sm:p-6 flex flex-col items-center justify-center text-center group cursor-pointer min-w-0">
             <div class="w-16 h-16 bg-brand-surface dark:bg-[#1E293B] rounded-full flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
               <i class="fa-solid fa-user-plus text-2xl text-accent group-hover:text-white transition-colors"></i>
             </div>
@@ -432,7 +439,7 @@
             <p class="text-xs text-brand-muted dark:text-gray-400">Dispatch a team</p>
           </a>
 
-          <a href="#reports" onclick="activateSection('reports'); return false;" class="dashboard-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer">
+          <a href="#reports" onclick="activateSection('reports'); return false;" class="dashboard-card p-4 sm:p-6 flex flex-col items-center justify-center text-center group cursor-pointer min-w-0">
             <div class="w-16 h-16 bg-brand-surface dark:bg-[#1E293B] rounded-full flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
               <i class="fa-solid fa-chart-line text-2xl text-accent group-hover:text-white transition-colors"></i>
             </div>
@@ -442,7 +449,7 @@
         </div>
 
         <!-- Recent Jobs Table -->
-        <div class="dashboard-card p-6 mt-6 reveal">
+        <div class="dashboard-card p-4 sm:p-6 mt-6 reveal min-w-0 max-w-full overflow-hidden">
           <div class="flex justify-between items-center mb-6">
             <h3 class="font-bold text-lg text-brand-dark dark:text-white">Recent Jobs</h3>
             <button onclick="activateSection('jobs')" class="text-accent text-sm font-bold hover:underline">View All</button>
@@ -502,7 +509,7 @@
       <!-- ALL JOBS                                        -->
       <!-- ============================================== -->
       <div id="jobs" class="admin-section hidden">
-        <div class="dashboard-card p-6 reveal">
+        <div class="dashboard-card p-4 sm:p-6 reveal min-w-0 max-w-full overflow-hidden">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 class="text-2xl font-serif font-bold text-brand-dark dark:text-white"><span class="text-accent">📋</span> All Jobs</h2>
@@ -615,7 +622,7 @@
       <!-- CLIENTS                                         -->
       <!-- ============================================== -->
       <div id="clients" class="admin-section hidden">
-        <div class="dashboard-card p-6 reveal">
+        <div class="dashboard-card p-4 sm:p-6 reveal min-w-0 max-w-full overflow-hidden">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 class="text-2xl font-serif font-bold text-brand-dark dark:text-white"><span class="text-accent">👥</span> Clients</h2>
@@ -713,7 +720,7 @@
       <!-- CREW                                            -->
       <!-- ============================================== -->
       <div id="crew" class="admin-section hidden">
-        <div class="dashboard-card p-6 reveal">
+        <div class="dashboard-card p-4 sm:p-6 reveal min-w-0 max-w-full overflow-hidden">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 class="text-2xl font-serif font-bold text-brand-dark dark:text-white"><span class="text-accent">👷</span> Field Crew</h2>
@@ -724,8 +731,8 @@
             </button>
           </div>
 
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="dashboard-card p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div class="dashboard-card p-4 sm:p-6 min-w-0">
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Elena" class="w-14 h-14 rounded-full object-cover">
                 <div>
@@ -752,7 +759,7 @@
               </div>
             </div>
 
-            <div class="dashboard-card p-6">
+            <div class="dashboard-card p-4 sm:p-6 min-w-0">
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Marcus" class="w-14 h-14 rounded-full object-cover">
                 <div>
@@ -779,7 +786,7 @@
               </div>
             </div>
 
-            <div class="dashboard-card p-6">
+            <div class="dashboard-card p-4 sm:p-6 min-w-0">
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Priya" class="w-14 h-14 rounded-full object-cover">
                 <div>
@@ -806,7 +813,7 @@
               </div>
             </div>
 
-            <div class="dashboard-card p-6">
+            <div class="dashboard-card p-4 sm:p-6 min-w-0">
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="James" class="w-14 h-14 rounded-full object-cover">
                 <div>
@@ -840,35 +847,35 @@
       <!-- ANALYTICS / REPORTS                             -->
       <!-- ============================================== -->
       <div id="reports" class="admin-section hidden">
-        <div class="dashboard-card p-6 reveal">
-          <h2 class="text-2xl font-serif font-bold mb-2 text-brand-dark dark:text-white"><span class="text-accent">📊</span> Business Analytics</h2>
-          <p class="text-brand-muted dark:text-gray-400 mb-6">Complete performance overview across all services.</p>
+        <div class="dashboard-card p-4 sm:p-6 reveal min-w-0 max-w-full overflow-hidden">
+          <h2 class="text-xl sm:text-2xl font-serif font-bold mb-2 text-brand-dark dark:text-white"><span class="text-accent">📊</span> Business Analytics</h2>
+          <p class="text-sm text-brand-muted dark:text-gray-400 mb-6">Complete performance overview across all services.</p>
 
-          <div class="grid md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-brand-surface dark:bg-[#1E293B] rounded-2xl p-4 border border-gray-100 dark:border-white/5" style="height: 300px; position: relative;">
-              <canvas id="servicesChart"></canvas>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 min-w-0 max-w-full">
+            <div class="w-full min-w-0 max-w-full overflow-hidden bg-brand-surface dark:bg-[#1E293B] rounded-2xl p-3 sm:p-4 border border-gray-100 dark:border-white/5 relative" style="height: 300px;">
+              <canvas id="servicesChart" class="w-full max-w-full"></canvas>
             </div>
-            <div class="bg-brand-surface dark:bg-[#1E293B] rounded-2xl p-4 border border-gray-100 dark:border-white/5" style="height: 300px; position: relative;">
-              <canvas id="statusChart"></canvas>
+            <div class="w-full min-w-0 max-w-full overflow-hidden bg-brand-surface dark:bg-[#1E293B] rounded-2xl p-3 sm:p-4 border border-gray-100 dark:border-white/5 relative" style="height: 300px;">
+              <canvas id="statusChart" class="w-full max-w-full"></canvas>
             </div>
           </div>
 
-          <div class="grid md:grid-cols-4 gap-4 mt-6">
-            <div class="bg-brand-surface dark:bg-[#1E293B] p-5 rounded-2xl border border-gray-100 dark:border-white/5">
-              <p class="text-xs text-brand-muted dark:text-gray-400 uppercase tracking-wider">Avg. Job Value</p>
-              <p class="text-2xl font-black text-brand-dark dark:text-white mt-2">$482</p>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-6 min-w-0 max-w-full">
+            <div class="bg-brand-surface dark:bg-[#1E293B] p-3.5 sm:p-5 rounded-2xl border border-gray-100 dark:border-white/5 min-w-0">
+              <p class="text-[11px] sm:text-xs text-brand-muted dark:text-gray-400 uppercase tracking-wider truncate">Avg. Job Value</p>
+              <p class="text-xl sm:text-2xl font-black text-brand-dark dark:text-white mt-1 sm:mt-2">$482</p>
             </div>
-            <div class="bg-brand-surface dark:bg-[#1E293B] p-5 rounded-2xl border border-gray-100 dark:border-white/5">
-              <p class="text-xs text-brand-muted dark:text-gray-400 uppercase tracking-wider">Avg. Duration</p>
-              <p class="text-2xl font-black text-brand-dark dark:text-white mt-2">3.2 days</p>
+            <div class="bg-brand-surface dark:bg-[#1E293B] p-3.5 sm:p-5 rounded-2xl border border-gray-100 dark:border-white/5 min-w-0">
+              <p class="text-[11px] sm:text-xs text-brand-muted dark:text-gray-400 uppercase tracking-wider truncate">Avg. Duration</p>
+              <p class="text-xl sm:text-2xl font-black text-brand-dark dark:text-white mt-1 sm:mt-2">3.2 days</p>
             </div>
-            <div class="bg-brand-surface dark:bg-[#1E293B] p-5 rounded-2xl border border-gray-100 dark:border-white/5">
-              <p class="text-xs text-brand-muted dark:text-gray-400 uppercase tracking-wider">Repeat Clients</p>
-              <p class="text-2xl font-black text-brand-dark dark:text-white mt-2">38%</p>
+            <div class="bg-brand-surface dark:bg-[#1E293B] p-3.5 sm:p-5 rounded-2xl border border-gray-100 dark:border-white/5 min-w-0">
+              <p class="text-[11px] sm:text-xs text-brand-muted dark:text-gray-400 uppercase tracking-wider truncate">Repeat Clients</p>
+              <p class="text-xl sm:text-2xl font-black text-brand-dark dark:text-white mt-1 sm:mt-2">38%</p>
             </div>
-            <div class="bg-brand-surface dark:bg-[#1E293B] p-5 rounded-2xl border border-gray-100 dark:border-white/5">
-              <p class="text-xs text-brand-muted dark:text-gray-400 uppercase tracking-wider">Clearance Rate</p>
-              <p class="text-2xl font-black text-emerald-600 mt-2">99.8%</p>
+            <div class="bg-brand-surface dark:bg-[#1E293B] p-3.5 sm:p-5 rounded-2xl border border-gray-100 dark:border-white/5 min-w-0">
+              <p class="text-[11px] sm:text-xs text-brand-muted dark:text-gray-400 uppercase tracking-wider truncate">Clearance Rate</p>
+              <p class="text-xl sm:text-2xl font-black text-emerald-600 mt-1 sm:mt-2">99.8%</p>
             </div>
           </div>
         </div>
@@ -878,7 +885,7 @@
       <!-- INVOICES                                        -->
       <!-- ============================================== -->
       <div id="invoices" class="admin-section hidden">
-        <div class="dashboard-card p-6 reveal">
+        <div class="dashboard-card p-4 sm:p-6 reveal min-w-0 max-w-full overflow-hidden">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 class="text-2xl font-serif font-bold text-brand-dark dark:text-white"><span class="text-accent">🧾</span> Invoices</h2>
@@ -961,7 +968,7 @@
       <!-- SETTINGS                                        -->
       <!-- ============================================== -->
       <div id="settings" class="admin-section hidden">
-        <div class="dashboard-card p-6 reveal">
+        <div class="dashboard-card p-4 sm:p-6 reveal min-w-0 max-w-full overflow-hidden">
           <h2 class="text-2xl font-serif font-bold text-brand-dark dark:text-white"><span class="text-accent">⚙️</span> System Settings</h2>
           <p class="text-brand-muted dark:text-gray-400 mt-1 mb-6">Configure your workspace and preferences.</p>
 
@@ -1295,9 +1302,10 @@
               legend: {
                 position: 'bottom',
                 labels: {
+                  boxWidth: 10,
                   color: colors.text,
-                  font: { size: 11 },
-                  padding: 10,
+                  font: { size: 10 },
+                  padding: 8,
                   usePointStyle: true,
                 }
               },
@@ -1306,7 +1314,7 @@
                 text: 'Job Distribution by Service',
                 color: colors.text,
                 font: { size: 13, weight: '600' },
-                padding: { bottom: 15 }
+                padding: { bottom: 8 }
               }
             }
           }
@@ -1345,18 +1353,18 @@
                 text: 'Job Status Breakdown',
                 color: colors.text,
                 font: { size: 13, weight: '600' },
-                padding: { bottom: 15 }
+                padding: { bottom: 8 }
               }
             },
             scales: {
               y: {
                 beginAtZero: true,
                 grid: { color: colors.grid },
-                ticks: { color: colors.text, font: { size: 11 } }
+                ticks: { color: colors.text, font: { size: 10 } }
               },
               x: {
                 grid: { display: false },
-                ticks: { color: colors.text, font: { size: 11, weight: '500' } }
+                ticks: { color: colors.text, font: { size: 10, weight: '500' } }
               }
             }
           }
